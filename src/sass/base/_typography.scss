@@ -1,0 +1,9 @@
+@use '../utilities/' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
+body {
+    font-size: 32px;
+    min-height: 100vh;
+    font-family: $ff-primary;
+}

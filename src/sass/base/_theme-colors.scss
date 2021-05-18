@@ -1,0 +1,60 @@
+/* Dark theme */
+body[data-theme="dark"] {
+    /* Backgrounds */
+    --c-bg-main: hsl(222, 26%, 31%);
+    --c-bg-keypad: hsl(223, 31%, 20%);
+    --c-bg-toggle: hsl(223, 31%, 20%);
+    --c-bg-screen: hsl(224, 36%, 15%);
+    /* Keys */
+    --c-keys-func: hsl(225, 21%, 49%);
+    --c-keys-func-shadow: hsl(224, 28%, 35%);
+    --c-keys-equal: hsl(6, 63%, 50%);
+    --c-keys-equal-shadow: hsl(6, 70%, 34%);
+    --c-toggle: hsl(6, 63%, 50%);
+    --c-keys: hsl(30, 25%, 89%);
+    --c-keys-shadow: hsl(28, 16%, 65%);
+    /* Text */
+    --c-text-primary: hsl(221, 14%, 31%);
+    --c-text-secondary: hsl(0, 0, 100%);
+}
+
+/* Light theme */
+body[data-theme="light"] {
+    /* Backgrounds */
+    --c-bg-main: hsl(0, 0%, 90%);
+    --c-bg-keypad: hsl(0, 5%, 81%);
+    --c-bg-toggle: hsl(0, 5%, 81%);
+    --c-bg-screen: hsl(0, 0%, 93%);
+    /* Keys */
+    --c-keys-func: hsl(185, 42%, 37%);
+    --c-keys-func-shadow: hsl(185, 58%, 25%);
+    --c-keys-equal: hsl(25, 98%, 40%);
+    --c-keys-equal-shadow: hsl(25, 99%, 27%);
+    --c-toggle: hsl(25, 98%, 40%);
+    --c-keys: hsl(45, 7%, 89%);
+    --c-keys-shadow: hsl(35, 11%, 61%);
+    /* Text */
+    --c-text-primary: hsl(60, 10%, 19%);
+    --c-text-secondary: hsl(0, 0, 100%);
+}
+
+/* Neon theme */
+body[data-theme="neon"] {
+    /* Backgrounds */
+    --c-bg-main: hsl(268, 75%, 9%);
+    --c-bg-keypad: hsl(268, 71%, 12%);
+    --c-bg-toggle: hsl(268, 71%, 12%);
+    --c-bg-screen: hsl(268, 71%, 12%);
+    /* Keys */
+    --c-keys-func: hsl(281, 89%, 26%);
+    --c-keys-func-shadow: hsl(285, 91%, 52%);
+    --c-keys-equal: hsl(176, 100%, 44%);
+    --c-keys-equal-shadow: hsl(177, 92%, 70%);
+    --c-keys-toggle: hsl(176, 100%, 44%);
+    --c-keys: hsl(268, 47%, 21%);
+    --c-keys-shadow: hsl(290, 70%, 36%);
+    /* Text */
+    --c-text-primary: hsl(52, 100%, 62%);
+    --c-text-secondary: hsl(0, 0, 100%);
+    --c-text-tertiary: hsl(198, 20%, 13%);
+}

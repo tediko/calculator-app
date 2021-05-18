@@ -1,0 +1,28 @@
+/* Colors from base/theme-colors.scss */
+/* Backgrounds */
+$c-bg-main: var(--c-bg-main); 
+$c-bg-keypad: var(--c-bg-keypad);
+$c-bg-toggle: var(--c-bg-toggle);
+$c-bg-screen: var(--c-bg-screen);
+/* Keys */
+$c-keys-func: var(--c-keys-func);
+$c-keys-func-shadow: var(--c-keys-func-shadow);
+$c-keys-equal: var(--c-keys-equal);
+$c-keys-equal-shadow: var(--c-keys-equal-shadow);
+$c-toggle: var(--c-keys-toggle);
+$c-keys: var(--c-keys-keys);
+$c-keys-shadow: var(--c-keys-keys-shadow);
+/* Text */
+$c-text-primary: var(--c-text-primary);
+$c-text-secondary: var(--c-text-secondary);
+$c-text-tertiary: var(--c-text-tertiary);
+
+/* Fonts */
+$ff-primary: 'Spartan', sans-serif;
+
+/* Media query breakpoints */
+$breakpoints: (
+    'sm': 481px,
+    'md': 769px,
+    'lg': 1025px
+);
