@@ -7,8 +7,52 @@
   <link rel="stylesheet" href="css/main.css">
   <title>Frontend Mentor | Calculator app</title>
 </head>
-<body data-theme="light">
-
+<body data-theme="dark">
+  <main class="component-wrapper">
+    <!-- Calculator -->
+    <div class="calc">
+      <div class="calc__container">
+        <header class="calc__header">
+          <h1 class="calc__title">calc</h1>
+          <div class="calc__switch-wrapper">
+            <span class="calc__text">Theme</span>
+            <div class="calc__switch">
+              <label for="dark-theme" class="calc__label" aria-label="Toggle dark theme">1</label>
+              <input type="radio" name="light theme" id="dark-theme">
+              <label for="light-theme" class="calc__label" aria-label="Toggle light theme">2</label>
+              <input type="radio" name="light theme" id="light-theme">
+              <label for="neon-theme" class="calc__label" aria-label="Toggle neon theme">3</label>
+              <input type="radio" name="light theme" id="neon-theme">
+            </div>
+          </div>
+        </header>
+        <div class="calc__display">
+          <p class="calc__display-previous-value" data-previous-value></p>
+          <p class="calc__display-current-value" data-current-value></p>
+        </div>
+        <div class="calc__keypad">
+          <button class="calc__key" data-keys="num">7</button>
+          <button class="calc__key" data-keys="num">8</button>
+          <button class="calc__key" data-keys="num">9</button>
+          <button class="calc__key" data-keys="del">del</button>
+          <button class="calc__key" data-keys="num">4</button>
+          <button class="calc__key" data-keys="num">5</button>
+          <button class="calc__key" data-keys="num">6</button>
+          <button class="calc__key" data-keys="func">+</button>
+          <button class="calc__key" data-keys="num">1</button>
+          <button class="calc__key" data-keys="num">2</button>
+          <button class="calc__key" data-keys="num">3</button>
+          <button class="calc__key" data-keys="func">-</button>
+          <button class="calc__key" data-keys="num">.</button>
+          <button class="calc__key" data-keys="num">0</button>
+          <button class="calc__key" data-keys="func">/</button>
+          <button class="calc__key" data-keys="func">x</button>
+          <button class="calc__key" data-keys="reset">reset</button>
+          <button class="calc__key" data-keys="equals">&#61;</button>
+        </div>
+      </div>
+    </div>
+  </main>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>
