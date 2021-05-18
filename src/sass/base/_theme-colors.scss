@@ -15,7 +15,9 @@ body[data-theme="dark"] {
     --c-keys-shadow: hsl(28, 16%, 65%);
     /* Text */
     --c-text-primary: hsl(221, 14%, 31%);
-    --c-text-secondary: hsl(0, 0, 100%);
+    --c-text-secondary: hsl(0, 0%, 100%);
+    --c-text-header: hsl(0, 0%, 100%);
+    --c-text-display: hsl(0, 0%, 100%);
 }
 
 /* Light theme */
@@ -35,7 +37,9 @@ body[data-theme="light"] {
     --c-keys-shadow: hsl(35, 11%, 61%);
     /* Text */
     --c-text-primary: hsl(60, 10%, 19%);
-    --c-text-secondary: hsl(0, 0, 100%);
+    --c-text-secondary: hsl(0, 0%, 100%);
+    --c-text-header: hsl(60, 10%, 19%);
+    --c-text-display: hsl(60, 10%, 19%);
 }
 
 /* Neon theme */
@@ -55,6 +59,8 @@ body[data-theme="neon"] {
     --c-keys-shadow: hsl(290, 70%, 36%);
     /* Text */
     --c-text-primary: hsl(52, 100%, 62%);
-    --c-text-secondary: hsl(0, 0, 100%);
+    --c-text-secondary: hsl(0, 0%, 100%);
     --c-text-tertiary: hsl(198, 20%, 13%);
+    --c-text-header: hsl(52, 100%, 62%);
+    --c-text-display: hsl(52, 100%, 62%);
 }
