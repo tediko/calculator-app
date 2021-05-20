@@ -2,11 +2,20 @@
 
 .calc {
     $root: &;
+    width: 100%;
+    transition: margin 250ms ease-in;
+
+    @include breakpoint('md') {
+        margin-top: 76px;
+    }
 
     &__container {
         display: flex;
         flex-flow: column;
         gap: 24px;
+        max-width: 540px;
+        width: 100%;
+        margin: 0 auto;
     }
 
     &__header {
@@ -99,20 +108,28 @@
         margin-top: 11px;
         border-radius: 10px;
         background: $c-bg-screen;
-    }
 
+        @include breakpoint('md') {
+            height: 128px;
+        }
+    }
+    
     &__keypad {
         display: grid;
-        grid-template-columns: repeat(4, minmax(40px, 60px));
+        grid-template-columns: repeat(4, minmax(40px, 101px));
         grid-template-rows: repeat(5, 60px);
-        gap: 17px 12px;
-        max-width: 327px;
+        justify-content: space-between;
+        gap: clamp(17px, 4vw, 28px) clamp(12px, 3vw, 25px);
         width: 100%;
         height: max-content;
         padding: 24px 24px 28px 24px;
         background: var(--c-bg-keypad);
         border-radius: 10px;
         z-index: 0;
+
+        @include breakpoint('md') {
+            padding: 31px 31px 37px 31px;
+        }
     }
 
     &__key {
@@ -137,6 +154,11 @@
             }
         }
 
+        @include breakpoint('md') {
+            font-size: 2rem;
+            border-radius: 10px;
+        }
+
         &--num, &--func {
             @extend #{$root}__key;
             box-shadow: 0px 4px $c-keys-shadow;
@@ -147,12 +169,15 @@
             background-color: $c-keys-func;
             text-transform: uppercase;
             font-size: 1.0625rem;
-            padding-top: 0;
             color: $c-text-secondary;
             box-shadow: 0px 4px $c-keys-func-shadow;
-
+            
             &:active {
                 box-shadow: 0px 0px $c-keys-func-shadow;
+            }
+            
+            @include breakpoint('md') {
+                font-size: 1.25rem;
             }
         }
         
@@ -161,12 +186,15 @@
             background-color: $c-keys-equal;
             text-transform: uppercase;
             font-size: 1.0625rem;
-            padding-top: 0;
             color: $c-text-secondary;
             box-shadow: 0px 4px $c-keys-equal-shadow;
 
             &:active {
                 box-shadow: 0px 0px $c-keys-equal-shadow;
+            }
+
+            @include breakpoint('md') {
+                font-size: 1.25rem;
             }
         }
 

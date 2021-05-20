@@ -129,10 +129,22 @@ body[data-theme=neon] {
   padding: 24px;
 }
 
+.calc {
+  width: 100%;
+  transition: margin 250ms ease-in;
+}
+@media (min-width: 769px) {
+  .calc {
+    margin-top: 76px;
+  }
+}
 .calc__container {
   display: flex;
   flex-flow: column;
   gap: 24px;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
 }
 .calc__header {
   display: flex;
@@ -213,12 +225,17 @@ body[data-theme=neon] {
   border-radius: 10px;
   background: var(--c-bg-screen);
 }
+@media (min-width: 769px) {
+  .calc__display {
+    height: 128px;
+  }
+}
 .calc__keypad {
   display: grid;
-  grid-template-columns: repeat(4, minmax(40px, 60px));
+  grid-template-columns: repeat(4, minmax(40px, 101px));
   grid-template-rows: repeat(5, 60px);
-  gap: 17px 12px;
-  max-width: 327px;
+  justify-content: space-between;
+  gap: clamp(17px, 4vw, 28px) clamp(12px, 3vw, 25px);
   width: 100%;
   height: -webkit-max-content;
   height: -moz-max-content;
@@ -227,6 +244,11 @@ body[data-theme=neon] {
   background: var(--c-bg-keypad);
   border-radius: 10px;
   z-index: 0;
+}
+@media (min-width: 769px) {
+  .calc__keypad {
+    padding: 31px 31px 37px 31px;
+  }
 }
 .calc__key, .calc__key--equal, .calc__key--spec, .calc__key--num, .calc__key--func {
   position: relative;
@@ -247,6 +269,12 @@ body[data-theme=neon] {
 .calc__key:active::before, .calc__key--equal:active::before, .calc__key--spec:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
 }
+@media (min-width: 769px) {
+  .calc__key, .calc__key--equal, .calc__key--spec, .calc__key--num, .calc__key--func {
+    font-size: 2rem;
+    border-radius: 10px;
+  }
+}
 .calc__key--num, .calc__key--func {
   box-shadow: 0px 4px var(--c-keys-shadow);
 }
@@ -254,23 +282,31 @@ body[data-theme=neon] {
   background-color: var(--c-keys-func);
   text-transform: uppercase;
   font-size: 1.0625rem;
-  padding-top: 0;
   color: var(--c-text-secondary);
   box-shadow: 0px 4px var(--c-keys-func-shadow);
 }
 .calc__key--spec:active {
   box-shadow: 0px 0px var(--c-keys-func-shadow);
 }
+@media (min-width: 769px) {
+  .calc__key--spec {
+    font-size: 1.25rem;
+  }
+}
 .calc__key--equal {
   background-color: var(--c-keys-equal);
   text-transform: uppercase;
   font-size: 1.0625rem;
-  padding-top: 0;
   color: var(--c-text-secondary);
   box-shadow: 0px 4px var(--c-keys-equal-shadow);
 }
 .calc__key--equal:active {
   box-shadow: 0px 0px var(--c-keys-equal-shadow);
+}
+@media (min-width: 769px) {
+  .calc__key--equal {
+    font-size: 1.25rem;
+  }
 }
 .calc__key--span-two {
   grid-column: span 2;
