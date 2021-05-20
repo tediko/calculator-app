@@ -78,6 +78,15 @@
         position: absolute;
         width: 1px;
         height: 1px;
+
+        &:focus ~ #{$root}__toggle {
+            outline: none;
+        }
+
+        &:focus-visible ~ #{$root}__toggle {
+            outline: 2px dashed $c-keys-equal;
+            outline-offset: 1px;
+        }
     }
 
     &__toggle {

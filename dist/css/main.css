@@ -198,6 +198,13 @@ body[data-theme=neon] {
   width: 1px;
   height: 1px;
 }
+.calc__input:focus ~ .calc__toggle {
+  outline: none;
+}
+.calc__input:focus-visible ~ .calc__toggle {
+  outline: 2px dashed var(--c-keys-equal);
+  outline-offset: 1px;
+}
 .calc__toggle {
   position: absolute;
   top: 19px;
