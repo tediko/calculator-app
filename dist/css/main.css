@@ -228,7 +228,7 @@ body[data-theme=neon] {
   border-radius: 10px;
   z-index: 0;
 }
-.calc__key {
+.calc__key, .calc__key--equal, .calc__key--spec, .calc__key--num, .calc__key--func {
   position: relative;
   padding-top: 6px;
   font-family: "Spartan", sans-serif;
@@ -238,33 +238,28 @@ body[data-theme=neon] {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: transform 85ms ease-in, box-shadow 85ms ease-in;
 }
-.calc__key::before {
-  position: absolute;
-  content: "";
-  top: 4px;
-  left: 0;
-  background: var(--c-keys-shadow);
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  z-index: -1;
-}
-.calc__key:active {
+.calc__key:active, .calc__key--equal:active, .calc__key--spec:active, .calc__key--num:active, .calc__key--func:active {
   transform: translateY(4px);
+  box-shadow: 0px 0px var(--c-keys-shadow);
 }
-.calc__key:active::before {
+.calc__key:active::before, .calc__key--equal:active::before, .calc__key--spec:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
 }
-.calc__key--func {
+.calc__key--num, .calc__key--func {
+  box-shadow: 0px 4px var(--c-keys-shadow);
+}
+.calc__key--spec {
   background-color: var(--c-keys-func);
   text-transform: uppercase;
   font-size: 1.0625rem;
   padding-top: 0;
   color: var(--c-text-secondary);
+  box-shadow: 0px 4px var(--c-keys-func-shadow);
 }
-.calc__key--func::before {
-  background-color: var(--c-keys-func-shadow);
+.calc__key--spec:active {
+  box-shadow: 0px 0px var(--c-keys-func-shadow);
 }
 .calc__key--equal {
   background-color: var(--c-keys-equal);
@@ -272,9 +267,10 @@ body[data-theme=neon] {
   font-size: 1.0625rem;
   padding-top: 0;
   color: var(--c-text-secondary);
+  box-shadow: 0px 4px var(--c-keys-equal-shadow);
 }
-.calc__key--equal::before {
-  background-color: var(--c-keys-equal-shadow);
+.calc__key--equal:active {
+  box-shadow: 0px 0px var(--c-keys-equal-shadow);
 }
 .calc__key--span-two {
   grid-column: span 2;
