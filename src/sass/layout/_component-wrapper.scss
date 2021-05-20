@@ -2,4 +2,11 @@
 
 .component-wrapper {
     $root: &;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $c-bg-main;
+    padding: 24px;
 }
