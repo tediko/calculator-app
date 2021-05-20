@@ -252,7 +252,7 @@ body[data-theme=neon] {
     padding: 31px 31px 37px 31px;
   }
 }
-.calc__key, .calc__key--equal, .calc__key--spec, .calc__key--num, .calc__key--func {
+.calc__key, .calc__key--spec, .calc__key--equal, .calc__key--num, .calc__key--func {
   position: relative;
   padding-top: 6px;
   font-family: "Spartan", sans-serif;
@@ -264,15 +264,15 @@ body[data-theme=neon] {
   cursor: pointer;
   transition: transform 85ms ease-in, box-shadow 85ms ease-in;
 }
-.calc__key:active, .calc__key--equal:active, .calc__key--spec:active, .calc__key--num:active, .calc__key--func:active {
+.calc__key:active, .calc__key--spec:active, .calc__key--equal:active, .calc__key--num:active, .calc__key--func:active {
   transform: translateY(4px);
   box-shadow: 0px 0px var(--c-keys-shadow);
 }
-.calc__key:active::before, .calc__key--equal:active::before, .calc__key--spec:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
+.calc__key:active::before, .calc__key--spec:active::before, .calc__key--equal:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
 }
 @media (min-width: 769px) {
-  .calc__key, .calc__key--equal, .calc__key--spec, .calc__key--num, .calc__key--func {
+  .calc__key, .calc__key--spec, .calc__key--equal, .calc__key--num, .calc__key--func {
     font-size: 2rem;
     border-radius: 10px;
   }
@@ -280,35 +280,29 @@ body[data-theme=neon] {
 .calc__key--num, .calc__key--func {
   box-shadow: 0px 4px var(--c-keys-shadow);
 }
-.calc__key--spec {
-  background-color: var(--c-keys-func);
+.calc__key--spec, .calc__key--equal {
   text-transform: uppercase;
   font-size: 1.0625rem;
   color: var(--c-text-secondary);
+}
+@media (min-width: 769px) {
+  .calc__key--spec, .calc__key--equal {
+    font-size: 1.25rem;
+  }
+}
+.calc__key--spec {
+  background-color: var(--c-keys-func);
   box-shadow: 0px 4px var(--c-keys-func-shadow);
 }
 .calc__key--spec:active {
   box-shadow: 0px 0px var(--c-keys-func-shadow);
 }
-@media (min-width: 769px) {
-  .calc__key--spec {
-    font-size: 1.25rem;
-  }
-}
 .calc__key--equal {
   background-color: var(--c-keys-equal);
-  text-transform: uppercase;
-  font-size: 1.0625rem;
-  color: var(--c-text-secondary);
   box-shadow: 0px 4px var(--c-keys-equal-shadow);
 }
 .calc__key--equal:active {
   box-shadow: 0px 0px var(--c-keys-equal-shadow);
-}
-@media (min-width: 769px) {
-  .calc__key--equal {
-    font-size: 1.25rem;
-  }
 }
 .calc__key--span-two {
   grid-column: span 2;
