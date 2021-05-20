@@ -108,6 +108,7 @@
         margin-top: 11px;
         border-radius: 10px;
         background: $c-bg-screen;
+        transition: height 250ms ease-in;
 
         @include breakpoint('md') {
             height: 128px;
@@ -126,6 +127,7 @@
         background: var(--c-bg-keypad);
         border-radius: 10px;
         z-index: 0;
+        transition: padding 250ms ease-in;
 
         @include breakpoint('md') {
             padding: 31px 31px 37px 31px;
