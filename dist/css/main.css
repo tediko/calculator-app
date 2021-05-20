@@ -149,6 +149,7 @@ body[data-theme=neon] {
 .calc__header {
   display: flex;
   justify-content: space-between;
+  max-height: 38px;
 }
 .calc__title {
   color: var(--c-text-header);
@@ -170,7 +171,7 @@ body[data-theme=neon] {
   display: flex;
   align-self: flex-start;
   justify-content: space-around;
-  height: 100%;
+  height: 45px;
   width: 70px;
   margin-top: -4px;
 }

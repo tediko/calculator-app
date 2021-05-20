@@ -21,6 +21,7 @@
     &__header {
         display: flex;
         justify-content: space-between;
+        max-height: 38px;
     }
 
     &__title {
@@ -46,7 +47,7 @@
         display: flex;
         align-self: flex-start;
         justify-content: space-around;
-        height: 100%;
+        height: 45px;
         width: 70px;
         margin-top: -4px;
 
