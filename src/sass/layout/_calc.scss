@@ -125,7 +125,7 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-
+        
         &::before {
             position: absolute;
             content: "";
@@ -136,6 +136,14 @@
             height: 100%;
             border-radius: 5px;
             z-index: -1;
+        }
+        
+        &:active {
+            transform: translateY(4px);
+
+            &::before {
+                display: none;
+            }
         }
 
         &--func {

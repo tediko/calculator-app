@@ -250,6 +250,12 @@ body[data-theme=neon] {
   border-radius: 5px;
   z-index: -1;
 }
+.calc__key:active {
+  transform: translateY(4px);
+}
+.calc__key:active::before {
+  display: none;
+}
 .calc__key--func {
   background-color: var(--c-keys-func);
   text-transform: uppercase;
