@@ -166,6 +166,17 @@
             box-shadow: 0px 4px $c-keys-shadow;
         }
 
+        &--num, &--func, &--spec {
+            &:focus {
+                outline: none;
+            }
+            
+            &:focus-visible {
+                color: $c-keys-equal;
+                box-shadow: 0 4px $c-keys-equal;
+            }
+        }
+
         &--spec, &--equal {
             @extend #{$root}__key;
             text-transform: uppercase;
@@ -192,6 +203,14 @@
 
             &:active {
                 box-shadow: 0px 0px $c-keys-equal-shadow;
+            }
+
+            &:focus {
+                outline: none;
+            }
+            
+            &:focus-visible {
+                box-shadow: 0 4px $c-keys;
             }
         }
 
