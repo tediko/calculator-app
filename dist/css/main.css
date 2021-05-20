@@ -109,7 +109,7 @@ body[data-theme=neon] {
   --c-keys-func-shadow: hsl(285, 91%, 52%);
   --c-keys-equal: hsl(176, 100%, 44%);
   --c-keys-equal-shadow: hsl(177, 92%, 70%);
-  --c-keys-toggle: hsl(176, 100%, 44%);
+  --c-toggle: hsl(176, 100%, 44%);
   --c-keys: hsl(268, 47%, 21%);
   --c-keys-shadow: hsl(290, 70%, 36%);
   /* Text */
