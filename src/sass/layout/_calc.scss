@@ -16,6 +16,28 @@
         margin-top: 76px;
     }
 
+    /* Class to add transition after initial page load */
+    &.enable-transition {
+        #{$root}__title, #{$root}__text,
+        #{$root}__label, #{$root}__display-value {
+            transition: color 700ms ease-in-out;
+        }
+
+        #{$root}__key {
+            transition: background-color 700ms ease-in-out,
+                        color 700ms ease-in-out,
+                        box-shadow 700ms ease-in-out;
+        }
+
+        #{$root}__toggle, #{$root}__display, #{$root}__keypad {
+            transition: background-color 700ms ease-in-out;
+        }
+
+        #{$root}__toggle::before {
+            transition: left 250ms ease-in;
+        }
+    }
+
     &__container {
         display: flex;
         flex-flow: column;
@@ -126,13 +148,6 @@
         height: 26px;
         border-radius: 20px;
         background: $c-bg-toggle;
-
-        /* Class to add transition after initial page load */
-        &.enable-transition {
-            &::before {
-                transition: left 250ms ease-in;
-            }
-        }
 
         /* Toggle circle */
         &::before {
