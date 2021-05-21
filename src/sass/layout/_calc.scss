@@ -1,5 +1,12 @@
 @use '../utilities/' as *;
 
+/* body {
+    background-image: url(../../design/desktop-design-theme-1.jpg);
+    background-size: 1440px;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+} */
+
 .calc {
     $root: &;
     width: 100%;
@@ -114,15 +121,31 @@
     }
 
     &__display {
-        height: 88px;
+        display: grid;
+        align-content: center;
+        height: clamp(88px, 20vw, 128px);
         margin-top: 11px;
         border-radius: 10px;
         background: $c-bg-screen;
         transition: height 250ms ease-in;
+        padding: 10px 24px;
 
         @include breakpoint('md') {
-            height: 128px;
+            padding: 10px 31px;
         }
+    }
+
+    &__display-previous-value {
+        color: $c-text-header;
+        justify-self: end;
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        opacity: 0.3;
+    }
+    
+    &__display-current-value {
+        color: $c-text-header;
+        justify-self: end;
+        font-size: clamp(2rem, 7vw, 2.9375rem);
     }
     
     &__keypad {
