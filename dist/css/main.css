@@ -392,8 +392,8 @@ body[data-theme=neon] {
 }
 .calc__key:active, .calc__key--spec:active, .calc__key--equal:active, .calc__key--num:active, .calc__key--func:active {
   transform: translateY(4px);
-  -webkit-animation: keyDrop 5ms ease-in forwards;
-          animation: keyDrop 5ms ease-in forwards;
+  -webkit-animation: keyDrop 0ms ease-in forwards;
+          animation: keyDrop 0ms ease-in forwards;
 }
 .calc__key:active::before, .calc__key--spec:active::before, .calc__key--equal:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
@@ -429,16 +429,16 @@ body[data-theme=neon] {
   box-shadow: 0px 4px var(--c-keys-func-shadow);
 }
 .calc__key--spec:active {
-  -webkit-animation: keyDrop-spec 5ms ease-in forwards;
-          animation: keyDrop-spec 5ms ease-in forwards;
+  -webkit-animation: keyDrop-spec 0ms ease-in forwards;
+          animation: keyDrop-spec 0ms ease-in forwards;
 }
 .calc__key--equal {
   background-color: var(--c-keys-equal);
   box-shadow: 0px 4px var(--c-keys-equal-shadow);
 }
 .calc__key--equal:active {
-  -webkit-animation: keyDrop-equal 5ms ease-in forwards;
-          animation: keyDrop-equal 5ms ease-in forwards;
+  -webkit-animation: keyDrop-equal 0ms ease-in forwards;
+          animation: keyDrop-equal 0ms ease-in forwards;
 }
 .calc__key--equal:focus {
   outline: none;

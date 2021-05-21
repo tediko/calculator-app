@@ -242,7 +242,7 @@
         
         &:active {
             transform: translateY(4px);
-            animation: keyDrop 5ms ease-in forwards;
+            animation: keyDrop 0ms ease-in forwards;
 
             &::before {
                 display: none;
@@ -286,7 +286,7 @@
             box-shadow: 0px 4px $c-keys-func-shadow;
             
             &:active {
-                animation: keyDrop-spec 5ms ease-in forwards;
+                animation: keyDrop-spec 0ms ease-in forwards;
             }
         }
         
@@ -295,7 +295,7 @@
             box-shadow: 0px 4px $c-keys-equal-shadow;
 
             &:active {
-                animation: keyDrop-equal 5ms ease-in forwards;
+                animation: keyDrop-equal 0ms ease-in forwards;
             }
 
             &:focus {
