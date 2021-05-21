@@ -248,15 +248,15 @@ body[data-theme=neon] {
     padding: 10px 31px;
   }
 }
-.calc__display-previous-value {
+.calc__display-value, .calc__display-value--current, .calc__display-value--previous {
   color: var(--c-text-header);
   justify-self: end;
+}
+.calc__display-value--previous {
   font-size: clamp(1rem, 4vw, 1.3rem);
   opacity: 0.3;
 }
-.calc__display-current-value {
-  color: var(--c-text-header);
-  justify-self: end;
+.calc__display-value--current {
   font-size: clamp(2rem, 7vw, 2.9375rem);
 }
 .calc__keypad {

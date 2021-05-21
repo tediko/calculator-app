@@ -135,17 +135,20 @@
         }
     }
 
-    &__display-previous-value {
+    &__display-value {
         color: $c-text-header;
         justify-self: end;
-        font-size: clamp(1rem, 4vw, 1.3rem);
-        opacity: 0.3;
-    }
-    
-    &__display-current-value {
-        color: $c-text-header;
-        justify-self: end;
-        font-size: clamp(2rem, 7vw, 2.9375rem);
+
+        &--previous {
+            @extend #{$root}__display-value;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            opacity: 0.3;
+        }
+
+        &--current {
+            @extend #{$root}__display-value;
+            font-size: clamp(2rem, 7vw, 2.9375rem);
+        }
     }
     
     &__keypad {
