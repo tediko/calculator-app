@@ -127,6 +127,13 @@
         border-radius: 20px;
         background: $c-bg-toggle;
 
+        /* Class to add transition after initial page load */
+        &.enable-transition {
+            &::before {
+                transition: left 250ms ease-in;
+            }
+        }
+
         /* Toggle circle */
         &::before {
             position: absolute;
@@ -138,7 +145,6 @@
             border-radius: 50%;
             background: $c-toggle;
             transform: translate(-50%, -50%);
-            transition: left 250ms ease-in;
         }
 
         /* Toggle circle but for hover effect */
