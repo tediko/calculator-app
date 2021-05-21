@@ -47,6 +47,55 @@ ol[role=list] {
 /* Fonts */
 /* Media query breakpoints */
 /* Mixin to manage responsive breakpoints */
+/* Keys */
+@-webkit-keyframes keyDrop {
+  0% {
+    box-shadow: 0 4px var(--c-keys-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-shadow);
+  }
+}
+@keyframes keyDrop {
+  0% {
+    box-shadow: 0 4px var(--c-keys-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-shadow);
+  }
+}
+@-webkit-keyframes keyDrop-func {
+  0% {
+    box-shadow: 0 4px var(--c-keys-func-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-func-shadow);
+  }
+}
+@keyframes keyDrop-func {
+  0% {
+    box-shadow: 0 4px var(--c-keys-func-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-func-shadow);
+  }
+}
+@-webkit-keyframes keyDrop-equal {
+  0% {
+    box-shadow: 0 4px var(--c-keys-equal-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-equal-shadow);
+  }
+}
+@keyframes keyDrop-equal {
+  0% {
+    box-shadow: 0 4px var(--c-keys-equal-shadow);
+  }
+  100% {
+    box-shadow: 0 0px var(--c-keys-equal-shadow);
+  }
+}
 body {
   font-size: 32px;
   min-height: 100vh;
@@ -128,6 +177,9 @@ body[data-theme=neon] {
   background-color: var(--c-bg-main);
   padding: 24px;
 }
+.component-wrapper.enable-transition {
+  transition: background-color 700ms ease-in-out;
+}
 
 /* body {
     background-image: url(../../design/desktop-design-theme-1.jpg);
@@ -138,11 +190,25 @@ body[data-theme=neon] {
 .calc {
   width: 100%;
   transition: margin 250ms ease-in;
+  /* Class to add transition after initial page load */
 }
 @media (min-width: 769px) {
   .calc {
     margin-top: 76px;
   }
+}
+.calc.enable-transition .calc__title, .calc.enable-transition .calc__text,
+.calc.enable-transition .calc__label, .calc.enable-transition .calc__display-value, .calc.enable-transition .calc__display-value--current, .calc.enable-transition .calc__display-value--previous {
+  transition: color 700ms ease-in-out;
+}
+.calc.enable-transition .calc__key, .calc.enable-transition .calc__key--spec, .calc.enable-transition .calc__key--equal, .calc.enable-transition .calc__key--num, .calc.enable-transition .calc__key--func {
+  transition: background-color 700ms ease-in-out, color 700ms ease-in-out, box-shadow 700ms ease-in-out;
+}
+.calc.enable-transition .calc__toggle, .calc.enable-transition .calc__display, .calc.enable-transition .calc__keypad {
+  transition: background-color 700ms ease-in-out;
+}
+.calc.enable-transition .calc__toggle::before {
+  transition: left 250ms ease-in;
 }
 .calc__container {
   display: flex;
@@ -238,12 +304,8 @@ body[data-theme=neon] {
   height: 26px;
   border-radius: 20px;
   background: var(--c-bg-toggle);
-  /* Class to add transition after initial page load */
   /* Toggle circle */
   /* Toggle circle but for hover effect */
-}
-.calc__toggle.enable-transition::before {
-  transition: left 250ms ease-in;
 }
 .calc__toggle::before {
   position: absolute;

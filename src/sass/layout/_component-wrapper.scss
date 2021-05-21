@@ -9,4 +9,8 @@
     min-height: 100vh;
     background-color: $c-bg-main;
     padding: 24px;
+
+    &.enable-transition {
+        transition: background-color 700ms ease-in-out;
+    }
 }
