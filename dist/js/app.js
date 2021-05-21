@@ -1,11 +1,120 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/js/app.js":
 /*!***********************!*\
   !*** ./src/js/app.js ***!
   \***********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _themeSwitch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./themeSwitch */ "./src/js/themeSwitch.js");
+
+var themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_0__.default();
+
+/***/ }),
+
+/***/ "./src/js/themeSwitch.js":
+/*!*******************************!*\
+  !*** ./src/js/themeSwitch.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ThemeSwitch)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ThemeSwitch = /*#__PURE__*/function () {
+  function ThemeSwitch() {
+    _classCallCheck(this, ThemeSwitch);
+
+    if (!this.vars()) return false;
+    this.setupEvents();
+  }
+
+  _createClass(ThemeSwitch, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        body: 'data-theme',
+        inputs: 'data-theme-input',
+        componentWrapper: 'data-component',
+        calc: 'data-calc',
+        lightTheme: 'light',
+        darkTheme: 'dark',
+        neonTheme: 'neon',
+        enableTransitions: 'enable-transition'
+      };
+      this.body = document.querySelector("[".concat(this.selectors.body, "]"));
+      this.inputs = document.querySelectorAll("[".concat(this.selectors.inputs, "]"));
+      this.componentWrapper = document.querySelector("[".concat(this.selectors.componentWrapper, "]"));
+      this.calc = document.querySelector("[".concat(this.selectors.calc, "]"));
+      if (!this.body || !this.inputs || !this.componentWrapper || !this.calc) return false;
+      this.activeTheme = JSON.parse(localStorage.getItem('theme')) || this.selectors.darkTheme;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      this.setBodyTheme();
+      this.inputs.forEach(function (input) {
+        input.addEventListener('focus', function () {
+          _this.toggleTheme(input);
+
+          _this.saveToLocalStorage();
+        });
+      });
+    } // Change body data-attribute to chosen theme
+
+  }, {
+    key: "toggleTheme",
+    value: function toggleTheme(input) {
+      this.newTheme = input.dataset.themeInput;
+      this.body.dataset.theme = this.newTheme;
+    } // Save chosen theme to local storage
+
+  }, {
+    key: "saveToLocalStorage",
+    value: function saveToLocalStorage() {
+      localStorage.setItem('theme', JSON.stringify("".concat(this.newTheme)));
+    } // This function is used on init.
+    // Set active theme and add classList to enable transitions on page.
+
+  }, {
+    key: "setBodyTheme",
+    value: function setBodyTheme() {
+      var _this2 = this;
+
+      this.body.dataset.theme = this.activeTheme;
+      this.inputs.forEach(function (input) {
+        var inputTheme = input.dataset.themeInput;
+        var delay = 50;
+
+        if (inputTheme == _this2.activeTheme) {
+          input.setAttribute('checked', '');
+          window.setTimeout(function () {
+            _this2.calc.classList.add("".concat(_this2.selectors.enableTransitions));
+
+            _this2.componentWrapper.classList.add("".concat(_this2.selectors.enableTransitions));
+          }, delay);
+        } else {
+          return false;
+        }
+      });
+    }
+  }]);
+
+  return ThemeSwitch;
+}();
 
 
 
@@ -17,7 +126,6 @@
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -82,6 +190,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	
