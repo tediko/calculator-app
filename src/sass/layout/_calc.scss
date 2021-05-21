@@ -238,12 +238,11 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        transition: transform 85ms ease-in,
-                    box-shadow 85ms ease-in;
+        transition: transform 85ms ease-in;
         
         &:active {
             transform: translateY(4px);
-            box-shadow: 0px 0px $c-keys-shadow;
+            animation: keyDrop 5ms ease-in forwards;
 
             &::before {
                 display: none;
@@ -287,7 +286,7 @@
             box-shadow: 0px 4px $c-keys-func-shadow;
             
             &:active {
-                box-shadow: 0px 0px $c-keys-func-shadow;
+                animation: keyDrop-spec 5ms ease-in forwards;
             }
         }
         
@@ -296,7 +295,7 @@
             box-shadow: 0px 4px $c-keys-equal-shadow;
 
             &:active {
-                box-shadow: 0px 0px $c-keys-equal-shadow;
+                animation: keyDrop-equal 5ms ease-in forwards;
             }
 
             &:focus {
