@@ -180,6 +180,8 @@ body[data-theme=neon] {
   height: 45px;
   width: 70px;
   margin-top: -4px;
+  /* Toggle circle and change position to choosen label */
+  /* Add hover effect in toggle for choosen label */
 }
 .calc__switch .calc__input:nth-of-type(1):checked ~ .calc__toggle::before {
   left: calc(0% + 13px);
@@ -189,6 +191,22 @@ body[data-theme=neon] {
 }
 .calc__switch .calc__input:nth-of-type(3):checked ~ .calc__toggle::before {
   left: calc(100% - 13px);
+}
+@media (min-width: 769px) {
+  .calc__switch .calc__label:nth-of-type(1):hover ~ .calc__toggle::after {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+  }
+  .calc__switch .calc__label:nth-of-type(2):hover ~ .calc__toggle::after {
+    opacity: 1;
+    left: calc(50%);
+    transition: opacity 250ms ease-in;
+  }
+  .calc__switch .calc__label:nth-of-type(3):hover ~ .calc__toggle::after {
+    opacity: 1;
+    left: calc(100% - 13px);
+    transition: opacity 250ms ease-in;
+  }
 }
 .calc__label {
   width: 100%;
@@ -220,6 +238,8 @@ body[data-theme=neon] {
   height: 26px;
   border-radius: 20px;
   background: var(--c-bg-toggle);
+  /* Toggle circle */
+  /* Toggle circle but for hover effect */
 }
 .calc__toggle::before {
   position: absolute;
@@ -232,6 +252,19 @@ body[data-theme=neon] {
   background: var(--c-toggle);
   transform: translate(-50%, -50%);
   transition: left 250ms ease-in;
+}
+.calc__toggle::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 13px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--c-toggle);
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  opacity: 0;
 }
 .calc__display {
   display: grid;

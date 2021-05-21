@@ -58,16 +58,37 @@
         width: 70px;
         margin-top: -4px;
 
-        #{$root}__input:nth-of-type(1):checked ~ .calc__toggle::before {
+        /* Toggle circle and change position to choosen label */
+        #{$root}__input:nth-of-type(1):checked ~ #{$root}__toggle::before {
             left: calc(0% + 13px);
         }
 
-        #{$root}__input:nth-of-type(2):checked ~ .calc__toggle::before {
+        #{$root}__input:nth-of-type(2):checked ~ #{$root}__toggle::before {
             left: calc(50%);
         }
         
-        #{$root}__input:nth-of-type(3):checked ~ .calc__toggle::before {
+        #{$root}__input:nth-of-type(3):checked ~ #{$root}__toggle::before {
             left: calc(100% - 13px);
+        }
+
+        /* Add hover effect in toggle for choosen label */
+        @include breakpoint('md') {
+            #{$root}__label:nth-of-type(1):hover ~ #{$root}__toggle::after {
+                opacity: 1;
+                transition: opacity 250ms ease-in;
+            }
+    
+            #{$root}__label:nth-of-type(2):hover ~ #{$root}__toggle::after {
+                opacity: 1;
+                left: calc(50%);
+                transition: opacity 250ms ease-in;
+            }
+    
+            #{$root}__label:nth-of-type(3):hover ~ #{$root}__toggle::after {
+                opacity: 1;
+                left: calc(100% - 13px);
+                transition: opacity 250ms ease-in;
+            }
         }
     }
 
@@ -106,6 +127,7 @@
         border-radius: 20px;
         background: $c-bg-toggle;
 
+        /* Toggle circle */
         &::before {
             position: absolute;
             content: '';
@@ -117,6 +139,21 @@
             background: $c-toggle;
             transform: translate(-50%, -50%);
             transition: left 250ms ease-in;
+        }
+
+        /* Toggle circle but for hover effect */
+        &::after {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 13px;
+            width: 16px;
+            height: 16px;
+            border: 1px solid $c-toggle;
+            border-radius: 50%;
+            background: transparent;
+            transform: translate(-50%, -50%);
+            opacity: 0;
         }
     }
 
