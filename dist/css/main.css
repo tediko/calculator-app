@@ -64,7 +64,7 @@ ol[role=list] {
     box-shadow: 0 0px var(--c-keys-shadow);
   }
 }
-@-webkit-keyframes keyDrop-func {
+@-webkit-keyframes keyDrop-spec {
   0% {
     box-shadow: 0 4px var(--c-keys-func-shadow);
   }
@@ -72,7 +72,7 @@ ol[role=list] {
     box-shadow: 0 0px var(--c-keys-func-shadow);
   }
 }
-@keyframes keyDrop-func {
+@keyframes keyDrop-spec {
   0% {
     box-shadow: 0 4px var(--c-keys-func-shadow);
   }
@@ -388,11 +388,12 @@ body[data-theme=neon] {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 85ms ease-in, box-shadow 85ms ease-in;
+  transition: transform 85ms ease-in;
 }
 .calc__key:active, .calc__key--spec:active, .calc__key--equal:active, .calc__key--num:active, .calc__key--func:active {
   transform: translateY(4px);
-  box-shadow: 0px 0px var(--c-keys-shadow);
+  -webkit-animation: keyDrop 5ms ease-in forwards;
+          animation: keyDrop 5ms ease-in forwards;
 }
 .calc__key:active::before, .calc__key--spec:active::before, .calc__key--equal:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
@@ -428,14 +429,16 @@ body[data-theme=neon] {
   box-shadow: 0px 4px var(--c-keys-func-shadow);
 }
 .calc__key--spec:active {
-  box-shadow: 0px 0px var(--c-keys-func-shadow);
+  -webkit-animation: keyDrop-spec 5ms ease-in forwards;
+          animation: keyDrop-spec 5ms ease-in forwards;
 }
 .calc__key--equal {
   background-color: var(--c-keys-equal);
   box-shadow: 0px 4px var(--c-keys-equal-shadow);
 }
 .calc__key--equal:active {
-  box-shadow: 0px 0px var(--c-keys-equal-shadow);
+  -webkit-animation: keyDrop-equal 5ms ease-in forwards;
+          animation: keyDrop-equal 5ms ease-in forwards;
 }
 .calc__key--equal:focus {
   outline: none;

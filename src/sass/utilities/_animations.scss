@@ -1,1 +1,32 @@
-@use '../utilities/variables';
+@use '../utilities/variables' as *;
+
+/* Keys */
+@keyframes keyDrop {
+    0% {
+        box-shadow: 0 4px $c-keys-shadow
+    }
+
+    100% {
+        box-shadow: 0 0px $c-keys-shadow;
+    }
+}
+
+@keyframes keyDrop-spec {
+    0% {
+        box-shadow: 0 4px $c-keys-func-shadow;
+    }
+
+    100% {
+        box-shadow: 0 0px $c-keys-func-shadow;
+    }
+}
+
+@keyframes keyDrop-equal {
+    0% {
+        box-shadow: 0 4px $c-keys-equal-shadow;
+    }
+
+    100% {
+        box-shadow: 0 0px $c-keys-equal-shadow;
+    }
+}
