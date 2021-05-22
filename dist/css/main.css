@@ -189,8 +189,8 @@ body[data-theme=neon] {
 
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?2ydwyi");
-  src: url("../fonts/icomoon.eot?2ydwyi#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?2ydwyi") format("truetype"), url("../fonts/icomoon.woff?2ydwyi") format("woff"), url("../fonts/icomoon.svg?2ydwyi#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?e6c71d");
+  src: url("../fonts/icomoon.eot?e6c71d#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?e6c71d") format("truetype"), url("../fonts/icomoon.woff?e6c71d") format("woff"), url("../fonts/icomoon.svg?e6c71d#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -208,12 +208,12 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.i-cog:before {
-  content: "";
+.i-close:before {
+  content: "";
 }
 
-.i-equalizer:before {
-  content: "";
+.i-cog:before {
+  content: "";
 }
 
 .theme-modal {
