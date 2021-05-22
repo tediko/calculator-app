@@ -56,6 +56,7 @@
     &__title {
         color: $c-text-header;
         font-size: 1.9375rem;
+        font-weight: 700;
     }
 
     &__switch-wrapper {
@@ -69,6 +70,7 @@
         font-size: 0.76rem;
         letter-spacing: 1px;
         margin: 0 23px 1px 0;
+        font-weight: 700;
     }
 
     &__switch {
@@ -118,6 +120,7 @@
         width: 100%;
         height: 100%;
         font-size: 0.7rem;
+        font-weight: 700;
         color: $c-text-header;
         text-align: center;
         z-index: 5;
@@ -226,7 +229,7 @@
         @include breakpoint('md') {
             top: 5px;
             left: 5px;
-            
+
             &:hover {
                 color: $c-toggle;
     
@@ -240,6 +243,7 @@
     &__display-value {
         color: $c-text-header;
         justify-self: end;
+        font-weight: 700;
 
         &--previous {
             @extend #{$root}__display-value;
@@ -277,6 +281,7 @@
         padding-top: 6px; // align font with design
         font-family: $ff-primary;
         font-size: 1.75rem;
+        font-weight: 700;
         color: $c-text-primary;
         background-color: $c-keys;
         border: none;

@@ -482,6 +482,7 @@ i {
 .calc__title {
   color: var(--c-text-header);
   font-size: 1.9375rem;
+  font-weight: 700;
 }
 .calc__switch-wrapper {
   display: flex;
@@ -493,6 +494,7 @@ i {
   font-size: 0.76rem;
   letter-spacing: 1px;
   margin: 0 23px 1px 0;
+  font-weight: 700;
 }
 .calc__switch {
   position: relative;
@@ -534,6 +536,7 @@ i {
   width: 100%;
   height: 100%;
   font-size: 0.7rem;
+  font-weight: 700;
   color: var(--c-text-header);
   text-align: center;
   z-index: 5;
@@ -646,6 +649,7 @@ i {
 .calc__display-value, .calc__display-value--current, .calc__display-value--previous {
   color: var(--c-text-header);
   justify-self: end;
+  font-weight: 700;
 }
 .calc__display-value--previous {
   font-size: clamp(1rem, 4vw, 1.3rem);
@@ -680,6 +684,7 @@ i {
   padding-top: 6px;
   font-family: "Spartan", sans-serif;
   font-size: 1.75rem;
+  font-weight: 700;
   color: var(--c-text-primary);
   background-color: var(--c-keys);
   border: none;
