@@ -8,6 +8,7 @@
     $c-black: #161a1d;
     $c-red: #e63946;
 
+    visibility: hidden;
     position: absolute;
     top: 12px;
     left: 12px;
@@ -16,6 +17,10 @@
     padding: 24px;
     border-radius: 10px;
     z-index: 999;
+
+    &.active {
+        animation: themeModalSlide 500ms ease-in-out forwards;
+    }
 
     @include breakpoint('sm') {
         top: 24px;

@@ -114,6 +114,41 @@ ol[role=list] {
     box-shadow: 0 0px var(--c-keys-equal-shadow);
   }
 }
+/* Theme-modal */
+@-webkit-keyframes themeModalSlide {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  80% {
+    visibility: visible;
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes themeModalSlide {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  80% {
+    visibility: visible;
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 body {
   font-size: 32px;
   min-height: 100vh;
@@ -217,6 +252,7 @@ i {
 }
 
 .theme-modal {
+  visibility: hidden;
   position: absolute;
   top: 12px;
   left: 12px;
@@ -225,6 +261,10 @@ i {
   padding: 24px;
   border-radius: 10px;
   z-index: 999;
+}
+.theme-modal.active {
+  -webkit-animation: themeModalSlide 500ms ease-in-out forwards;
+          animation: themeModalSlide 500ms ease-in-out forwards;
 }
 @media (min-width: 481px) {
   .theme-modal {
