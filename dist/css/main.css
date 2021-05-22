@@ -222,6 +222,24 @@ body[data-theme=neon] {
   --c-text-display: hsl(52, 100%, 62%);
 }
 
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: 998;
+  transition: opacity 500ms ease-in-out;
+}
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: none;
+}
+
 @font-face {
   font-family: "icomoon";
   src: url("../fonts/icomoon.eot?e6c71d");
