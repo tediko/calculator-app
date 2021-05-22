@@ -260,6 +260,13 @@ i {
   color: #e63946;
   cursor: pointer;
 }
+.theme-modal__close-cta:focus {
+  outline: none;
+}
+.theme-modal__close-cta:focus-visible {
+  outline: 2px solid #e63946;
+  outline-offset: 2px;
+}
 .theme-modal__select {
   position: relative;
   margin-bottom: 30px;
@@ -311,6 +318,14 @@ i {
   background-color: #e63946;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.theme-modal__picker:focus {
+  outline: none;
+}
+.theme-modal__picker:focus-visible {
+  outline: 2px solid #e63946;
+  outline-offset: 2px;
+  margin-left: 5px;
 }
 .theme-modal__picker--main {
   background-color: var(--c-bg-main);
