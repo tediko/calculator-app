@@ -242,6 +242,8 @@ i {
   }
 }
 .theme-modal__header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 30px;
 }
 .theme-modal__title {
@@ -250,6 +252,13 @@ i {
 }
 .theme-modal__title-icon {
   margin-right: 10px;
+}
+.theme-modal__close-cta {
+  border: none;
+  background-color: transparent;
+  font-size: 1.3rem;
+  color: #e63946;
+  cursor: pointer;
 }
 .theme-modal__select {
   position: relative;
@@ -299,7 +308,7 @@ i {
   width: 35px;
   height: 20px;
   border-radius: 5px;
-  background-color: tomato;
+  background-color: #e63946;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.04);
 }

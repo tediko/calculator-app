@@ -6,6 +6,7 @@
     $c-blue-darker: #457b9d;
     $c-blue-lighter: #d8e2dc;
     $c-black: #161a1d;
+    $c-red: #e63946;
 
     position: absolute;
     top: 12px;
@@ -30,6 +31,8 @@
     }
 
     &__header {
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 30px;
     }
 
@@ -40,6 +43,14 @@
 
     &__title-icon {
         margin-right: 10px;
+    }
+
+    &__close-cta {
+        border: none;
+        background-color: transparent;
+        font-size: 1.3rem;
+        color: $c-red;
+        cursor: pointer;
     }
 
     &__select {
@@ -94,7 +105,7 @@
         width: 35px;
         height: 20px;
         border-radius: 5px;
-        background-color: tomato;
+        background-color: $c-red;
         cursor: pointer;
         border: 1px solid rgba(0,0,0, 0.04);
 
