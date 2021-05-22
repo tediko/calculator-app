@@ -48,6 +48,23 @@ ol[role=list] {
 /* Fonts */
 /* Media query breakpoints */
 /* Mixin to manage responsive breakpoints */
+/* Display */
+@-webkit-keyframes iconRotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes iconRotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /* Keys */
 @-webkit-keyframes keyDrop {
   0% {
@@ -362,6 +379,7 @@ i {
   opacity: 0;
 }
 .calc__display {
+  position: relative;
   display: grid;
   align-content: center;
   height: clamp(88px, 20vw, 128px);
@@ -375,6 +393,33 @@ i {
   .calc__display {
     padding: 10px 31px;
   }
+}
+.calc__display-settings {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: var(--c-text-header);
+  cursor: pointer;
+  transition: color 300ms ease-in;
+}
+.calc__display-settings:focus {
+  outline: none;
+  color: var(--c-toggle);
+}
+.calc__display-settings:focus-visible {
+  color: var(--c-toggle);
+}
+.calc__display-settings:focus-visible .calc__display-icon {
+  -webkit-animation: iconRotate 3s linear infinite;
+          animation: iconRotate 3s linear infinite;
 }
 .calc__display-value, .calc__display-value--current, .calc__display-value--previous {
   color: var(--c-text-header);

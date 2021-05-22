@@ -179,6 +179,7 @@
     }
 
     &__display {
+        position: relative;
         display: grid;
         align-content: center;
         height: clamp(88px, 20vw, 128px);
@@ -190,6 +191,36 @@
 
         @include breakpoint('md') {
             padding: 10px 31px;
+        }
+    }
+
+    &__display-settings {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0px;
+        left: 0px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: $c-text-header;
+        cursor: pointer;
+        transition: color 300ms ease-in;
+
+        &:focus {
+            outline: none;
+            color: $c-toggle;
+        }
+
+        &:focus-visible {
+            color: $c-toggle;
+            
+            #{$root}__display-icon {
+                animation: iconRotate 3s linear infinite;
+            }
         }
     }
 
