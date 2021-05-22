@@ -1,5 +1,15 @@
 @use '../utilities/variables' as *;
 
+/* Display */
+@keyframes iconRotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* Keys */
 @keyframes keyDrop {
     0% {
