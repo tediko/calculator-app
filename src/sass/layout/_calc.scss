@@ -222,6 +222,16 @@
                 animation: iconRotate 3s linear infinite;
             }
         }
+
+        @include breakpoint('md') {
+            &:hover {
+                color: $c-toggle;
+    
+                #{$root}__display-icon {
+                    animation: iconRotate 3s linear infinite;
+                }
+            }
+        }
     }
 
     &__display-value {

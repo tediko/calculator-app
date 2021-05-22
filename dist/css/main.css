@@ -421,6 +421,15 @@ i {
   -webkit-animation: iconRotate 3s linear infinite;
           animation: iconRotate 3s linear infinite;
 }
+@media (min-width: 769px) {
+  .calc__display-settings:hover {
+    color: var(--c-toggle);
+  }
+  .calc__display-settings:hover .calc__display-icon {
+    -webkit-animation: iconRotate 3s linear infinite;
+            animation: iconRotate 3s linear infinite;
+  }
+}
 .calc__display-value, .calc__display-value--current, .calc__display-value--previous {
   color: var(--c-text-header);
   justify-self: end;
