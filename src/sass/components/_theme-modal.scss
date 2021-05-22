@@ -20,6 +20,10 @@
 
     &.active {
         animation: themeModalSlide 500ms ease-in-out forwards;
+
+        @include breakpoint('md') {
+            animation: themeModalSlideDesktop 500ms ease-in-out forwards;
+        }
     }
 
     @include breakpoint('sm') {
