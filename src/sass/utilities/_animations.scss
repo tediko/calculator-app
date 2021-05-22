@@ -59,3 +59,21 @@
         transform: scale(1);
     }
 }
+
+@keyframes themeModalSlideDesktop {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-50%) scale(0.8);
+    }
+    80% {
+        visibility: visible;
+        opacity: 0.8;
+        transform: translateY(-50%) scale(1.1);
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
