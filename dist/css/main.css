@@ -422,6 +422,10 @@ i {
           animation: iconRotate 3s linear infinite;
 }
 @media (min-width: 769px) {
+  .calc__display-settings {
+    top: 5px;
+    left: 5px;
+  }
   .calc__display-settings:hover {
     color: var(--c-toggle);
   }

@@ -224,6 +224,9 @@
         }
 
         @include breakpoint('md') {
+            top: 5px;
+            left: 5px;
+            
             &:hover {
                 color: $c-toggle;
     
