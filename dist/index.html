@@ -8,7 +8,7 @@
   <title>Frontend Mentor | Calculator app</title>
 </head>
 <body data-theme="dark">
-  <div class="overlay"></div>
+  <div class="overlay" data-overlay></div>
   <main class="component-wrapper" data-component>
     <!-- Calculator -->
     <div class="calc" data-calc>
@@ -32,7 +32,7 @@
           </div>
         </header>
         <div class="calc__display">
-          <button class="calc__display-settings" aria-label="Toggle theme settings"><i class="calc__display-icon i-cog"></i></button>
+          <button class="calc__display-settings" aria-label="Toggle theme settings" data-settings><i class="calc__display-icon i-cog"></i></button>
           <p class="calc__display-value--previous" data-previous-value>1233 +</p>
           <p class="calc__display-value--current" data-current-value>399,981</p>
         </div>
@@ -60,25 +60,25 @@
     </div>
 
     <!-- Theme color picker modal -->
-    <section class="theme-modal">
+    <section class="theme-modal" data-modal>
       <div class="theme-modal__container">
         <header class="theme-modal__header">
           <h2 class="theme-modal__title"><i class="theme-modal__title-icon i-cog"></i>Theme Settings</h2>
-          <button class="theme-modal__close-cta" aria-label="Close and save theme modal"><i class="theme-modal-close-icon i-close"></i></button>
+          <button class="theme-modal__close-cta" aria-label="Close and save theme modal" data-modal-close><i class="theme-modal-close-icon i-close"></i></button>
         </header>
         <div class="theme-modal__select">
           <h3 class="theme-modal__subtitle">Backgrounds</h3>
           <div class="theme-modal__colors-wrapper">
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--main"></button>
+              <button class="theme-modal__picker theme-modal__picker--main" data-theme-picker></button>
               <span class="theme-modal__name">Main</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--screen"></button>
+              <button class="theme-modal__picker theme-modal__picker--screen" data-theme-picker></button>
               <span class="theme-modal__name">Screen</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--keypad"></button>
+              <button class="theme-modal__picker theme-modal__picker--keypad" data-theme-picker></button>
               <span class="theme-modal__name">Keypad/Toggle</span>
             </div>
           </div>
@@ -87,27 +87,27 @@
           <h3 class="theme-modal__subtitle">Keys</h3>
           <div class="theme-modal__colors-wrapper">
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--numbers"></button>
+              <button class="theme-modal__picker theme-modal__picker--numbers" data-theme-picker></button>
               <span class="theme-modal__name">Numbers</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--numbers-shadow"></button>
+              <button class="theme-modal__picker theme-modal__picker--numbers-shadow" data-theme-picker></button>
               <span class="theme-modal__name">Num shad.</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--functions"></button>
+              <button class="theme-modal__picker theme-modal__picker--functions" data-theme-picker></button>
               <span class="theme-modal__name">Functions</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--functions-shadow"></button>
+              <button class="theme-modal__picker theme-modal__picker--functions-shadow" data-theme-picker></button>
               <span class="theme-modal__name">Func shad.</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--equal"></button>
+              <button class="theme-modal__picker theme-modal__picker--equal" data-theme-picker></button>
               <span class="theme-modal__name">Equal</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--equal-shadow"></button>
+              <button class="theme-modal__picker theme-modal__picker--equal-shadow" data-theme-picker></button>
               <span class="theme-modal__name">Equal shad.</span>
             </div>
           </div>
@@ -116,11 +116,11 @@
           <h3 class="theme-modal__subtitle">Text</h3>
           <div class="theme-modal__colors-wrapper">
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--primary"></button>
+              <button class="theme-modal__picker theme-modal__picker--primary" data-theme-picker></button>
               <span class="theme-modal__name">Primary</span>
             </div>
             <div class="theme-modal__color">
-              <button class="theme-modal__picker theme-modal__picker--secondary"></button>
+              <button class="theme-modal__picker theme-modal__picker--secondary" data-theme-picker></button>
               <span class="theme-modal__name">Secondary</span>
             </div>
           </div>
