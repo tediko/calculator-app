@@ -23,5 +23,8 @@
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.32.13",
     "sass-loader": "^11.0.1"
+  },
+  "dependencies": {
+    "vanilla-picker": "^2.11.2"
   }
 }
