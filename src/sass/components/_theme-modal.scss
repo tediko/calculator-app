@@ -1,0 +1,135 @@
+@use '../utilities/' as * ;
+
+.theme-modal {
+    $root: &;
+    $c-white: #ffffff;
+    $c-blue-darker: #457b9d;
+    $c-blue-lighter: #d8e2dc;
+    $c-black: #161a1d;
+
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    background-color: $c-white;
+    padding: 24px;
+    border-radius: 10px;
+    z-index: 999;
+
+    &__header {
+        margin-bottom: 30px;
+    }
+
+    &__title {
+        font-size: 1.3rem;
+        color: $c-blue-darker;
+    }
+
+    &__title-icon {
+        margin-right: 10px;
+    }
+
+    &__select {
+        position: relative;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+
+    &__subtitle {
+        position: relative;
+        display: inline-flex;
+        font-size: 1rem;
+        text-transform: uppercase;
+        background-color: $c-white;
+        padding-right: 10px;
+        margin-bottom: 15px;
+        color: $c-blue-lighter;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 0;
+            width: 100vw;
+            background: $c-blue-lighter;
+            height: 1px;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+    }
+
+    &__colors-wrapper {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &__color {
+        display: flex;
+        gap: 5px;
+        flex-basis: 131px;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    &__picker {
+        width: 35px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: tomato;
+        cursor: pointer;
+        border: 1px solid rgba(0,0,0, 0.04);
+
+        &--main {
+            background-color: $c-bg-main;
+        }
+
+        &--screen {
+            background-color: $c-bg-screen;
+        }
+
+        &--keypad {
+            background-color: $c-bg-keypad;
+        }
+
+        &--numbers {
+            background-color: $c-keys;
+        }
+
+        &--numbers-shadow {
+            background-color: $c-keys-shadow;
+        }
+
+        &--functions {
+            background-color: $c-keys-func;
+        }
+
+        &--functions-shadow {
+            background-color: $c-keys-func-shadow;
+        }
+
+        &--equal {
+            background-color: $c-keys-equal;
+        }
+
+        &--equal-shadow {
+            background-color: $c-keys-equal-shadow;
+        }
+
+        &--primary {
+            background-color: $c-text-primary;
+        }
+
+        &--secondary {
+            background-color: $c-text-secondary;
+        }
+    }
+
+    &__name {
+        font-size: 0.90625rem;
+        font-weight: 400;
+        margin-top: 4px;
+        color: $c-black;
+    }
+}

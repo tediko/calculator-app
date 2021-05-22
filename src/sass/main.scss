@@ -9,6 +9,9 @@
 /* Vendors */
 @use 'vendors/icons';
 
+/* Components */
+@use 'components/theme-modal';
+
 /* Layout */
 @use 'layout/component-wrapper';
 @use 'layout/calc';
