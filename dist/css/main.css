@@ -500,14 +500,20 @@ i {
     margin-top: 76px;
   }
 }
-.calc.enable-transition .calc__title, .calc.enable-transition .calc__text,
-.calc.enable-transition .calc__label, .calc.enable-transition .calc__display-value, .calc.enable-transition .calc__display-value--current, .calc.enable-transition .calc__display-value--previous {
+.calc.enable-transition .calc__title,
+.calc.enable-transition .calc__text,
+.calc.enable-transition .calc__label,
+.calc.enable-transition .calc__display-value,
+.calc.enable-transition .calc__display-value--current,
+.calc.enable-transition .calc__display-value--previous {
   transition: color 700ms ease-in-out;
 }
 .calc.enable-transition .calc__key, .calc.enable-transition .calc__key--spec, .calc.enable-transition .calc__key--equal, .calc.enable-transition .calc__key--num, .calc.enable-transition .calc__key--func {
   transition: background-color 700ms ease-in-out, color 700ms ease-in-out, box-shadow 700ms ease-in-out;
 }
-.calc.enable-transition .calc__toggle, .calc.enable-transition .calc__display, .calc.enable-transition .calc__keypad {
+.calc.enable-transition .calc__toggle,
+.calc.enable-transition .calc__display,
+.calc.enable-transition .calc__keypad {
   transition: background-color 700ms ease-in-out;
 }
 .calc.enable-transition .calc__toggle::before {
@@ -671,7 +677,6 @@ i {
 }
 .calc__display-settings:focus {
   outline: none;
-  color: var(--c-toggle);
 }
 .calc__display-settings:focus-visible {
   color: var(--c-toggle);
