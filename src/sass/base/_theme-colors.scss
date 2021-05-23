@@ -64,3 +64,26 @@ body[data-theme="neon"] {
     --c-text-header: hsl(52, 100%, 62%);
     --c-text-display: hsl(52, 100%, 62%);
 }
+
+/* Custom theme */
+body[data-theme="custom"] {
+    /* Backgrounds */
+    --c-bg-main: hsl(268, 75%, 9%);
+    --c-bg-keypad: hsl(268, 71%, 12%);
+    --c-bg-toggle: hsl(268, 71%, 12%);
+    --c-bg-screen: hsl(268, 71%, 12%);
+    /* Keys */
+    --c-keys-func: hsl(281, 89%, 26%);
+    --c-keys-func-shadow: hsl(285, 91%, 52%);
+    --c-keys-equal: hsl(176, 100%, 44%);
+    --c-keys-equal-shadow: hsl(177, 92%, 70%);
+    --c-toggle: hsl(176, 100%, 44%);
+    --c-keys: hsl(268, 47%, 21%);
+    --c-keys-shadow: hsl(290, 70%, 36%);
+    /* Text */
+    --c-text-primary: hsl(52, 100%, 62%);
+    --c-text-secondary: hsl(0, 0%, 100%);
+    --c-text-tertiary: hsl(198, 20%, 13%);
+    --c-text-header: hsl(52, 100%, 62%);
+    --c-text-display: hsl(52, 100%, 62%);
+}
