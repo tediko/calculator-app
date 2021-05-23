@@ -83,7 +83,7 @@
         align-self: flex-start;
         justify-content: space-around;
         height: 45px;
-        width: 70px;
+        width: 100px;
         margin-top: -4px;
 
         /* Toggle circle and change position to choosen label */
@@ -92,10 +92,14 @@
         }
 
         #{$root}__input:nth-of-type(2):checked ~ #{$root}__toggle::before {
-            left: calc(50%);
+            left: calc(24% + 13px);
         }
         
         #{$root}__input:nth-of-type(3):checked ~ #{$root}__toggle::before {
+            left: calc(48% + 13px);
+        }
+
+        #{$root}__input:nth-of-type(4):checked ~ #{$root}__toggle::before {
             left: calc(100% - 13px);
         }
 
@@ -108,11 +112,17 @@
     
             #{$root}__label:nth-of-type(2):hover ~ #{$root}__toggle::after {
                 opacity: 1;
-                left: calc(50%);
+                left: calc(24% + 13px);
                 transition: opacity 250ms ease-in;
             }
     
             #{$root}__label:nth-of-type(3):hover ~ #{$root}__toggle::after {
+                opacity: 1;
+                left: calc(48% + 13px);
+                transition: opacity 250ms ease-in;
+            }
+
+            #{$root}__label:nth-of-type(4):hover ~ #{$root}__toggle::after {
                 opacity: 1;
                 left: calc(100% - 13px);
                 transition: opacity 250ms ease-in;
