@@ -1,4 +1,5 @@
 import Picker from 'vanilla-picker';
+import ThemeSwitch from './themeSwitch';
 
 export default class ThemeModal {
     constructor() {
@@ -22,19 +23,21 @@ export default class ThemeModal {
         this.colorGeneratorWrapper = document.querySelector(`[${this.selectors.colorGeneratorWrapper}]`);
         if (!this.modal || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false;
 
-        this.colors = {
+        // Get colors from local storage or use empty object
+        this.colors = JSON.parse(localStorage.getItem('colors')) || {
             main: '',
             screen: '',
             keypad: '',
             numbers: '',
             numShad: '',
             functions: '',
-            funShad: '',
+            funcShad: '',
             equal: '',
             eqShad: '',
             primary: '',
             secondary: ''
         }
+        this.themeSwitch = new ThemeSwitch();
         this.created = false;
 
         return true;
@@ -56,7 +59,9 @@ export default class ThemeModal {
     // Hide modal
     close() {
         this.modal.classList.remove('active');
-        this.updateLocalStorage();
+        this.saveToLocalStorage();
+        this.themeSwitch.displayCustomTheme();
+        this.themeSwitch.saveToLocalStorage('custom');
     }
 
     // Create new Picker class and display palette with colors
@@ -78,13 +83,13 @@ export default class ThemeModal {
         })
     }
 
-    // Assign new colors to object
+    // Assign new colors to colors object
     setColors(colorType, color) {
         this.colors[colorType] = color;
     }
 
-    /* Update localStorage */
-    updateLocalStorage() {
+    /* Save to localStorage */
+    saveToLocalStorage() {
         localStorage.setItem('colors', JSON.stringify(this.colors));
     }
 }

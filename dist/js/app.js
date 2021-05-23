@@ -29,11 +29,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ ThemeModal)
 /* harmony export */ });
 /* harmony import */ var vanilla_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vanilla-picker */ "./node_modules/vanilla-picker/dist/vanilla-picker.mjs");
+/* harmony import */ var _themeSwitch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./themeSwitch */ "./src/js/themeSwitch.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -60,20 +62,22 @@ var ThemeModal = /*#__PURE__*/function () {
       this.closeButton = document.querySelector("[".concat(this.selectors.closeButton, "]"));
       this.colorButtons = document.querySelectorAll("[".concat(this.selectors.colorButtons, "]"));
       this.colorGeneratorWrapper = document.querySelector("[".concat(this.selectors.colorGeneratorWrapper, "]"));
-      if (!this.modal || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false;
-      this.colors = {
+      if (!this.modal || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false; // Get colors from local storage or use empty object
+
+      this.colors = JSON.parse(localStorage.getItem('colors')) || {
         main: '',
         screen: '',
         keypad: '',
         numbers: '',
         numShad: '',
         functions: '',
-        funShad: '',
+        funcShad: '',
         equal: '',
         eqShad: '',
         primary: '',
         secondary: ''
       };
+      this.themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_1__.default();
       this.created = false;
       return true;
     }
@@ -105,7 +109,9 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "close",
     value: function close() {
       this.modal.classList.remove('active');
-      this.updateLocalStorage();
+      this.saveToLocalStorage();
+      this.themeSwitch.displayCustomTheme();
+      this.themeSwitch.saveToLocalStorage('custom');
     } // Create new Picker class and display palette with colors
 
   }, {
@@ -129,18 +135,18 @@ var ThemeModal = /*#__PURE__*/function () {
           pick = null;
         }
       });
-    } // Assign new colors to object
+    } // Assign new colors to colors object
 
   }, {
     key: "setColors",
     value: function setColors(colorType, color) {
       this.colors[colorType] = color;
     }
-    /* Update localStorage */
+    /* Save to localStorage */
 
   }, {
-    key: "updateLocalStorage",
-    value: function updateLocalStorage() {
+    key: "saveToLocalStorage",
+    value: function saveToLocalStorage() {
       localStorage.setItem('colors', JSON.stringify(this.colors));
     }
   }]);
@@ -217,12 +223,18 @@ var ThemeSwitch = /*#__PURE__*/function () {
     value: function toggleTheme(input) {
       this.newTheme = input.dataset.themeInput;
       this.body.dataset.theme = this.newTheme;
+
+      if (this.newTheme == 'custom') {
+        this.displayCustomTheme();
+      } else {
+        this.removeCustomTheme();
+      }
     } // Save chosen theme to local storage
 
   }, {
     key: "saveToLocalStorage",
-    value: function saveToLocalStorage() {
-      localStorage.setItem('theme', JSON.stringify("".concat(this.newTheme)));
+    value: function saveToLocalStorage(theme) {
+      localStorage.setItem('theme', JSON.stringify("".concat(theme || this.newTheme)));
     } // This function is used on init.
     // Set active theme and add classList to enable transitions on page.
 
@@ -232,6 +244,11 @@ var ThemeSwitch = /*#__PURE__*/function () {
       var _this2 = this;
 
       this.body.dataset.theme = this.activeTheme;
+
+      if (this.activeTheme == 'custom') {
+        this.displayCustomTheme();
+      }
+
       this.inputs.forEach(function (input) {
         var inputTheme = input.dataset.themeInput;
         var delay = 50;
@@ -247,6 +264,53 @@ var ThemeSwitch = /*#__PURE__*/function () {
           return false;
         }
       });
+    } // Add custom theme variables to body.
+
+  }, {
+    key: "displayCustomTheme",
+    value: function displayCustomTheme() {
+      this.getColors();
+      this.body.style.setProperty('--c-bg-main', this.colors.main);
+      this.body.style.setProperty('--c-bg-keypad', this.colors.keypad);
+      this.body.style.setProperty('--c-bg-toggle', this.colors.keypad);
+      this.body.style.setProperty('--c-bg-screen', this.colors.screen);
+      this.body.style.setProperty('--c-keys-func', this.colors.functions);
+      this.body.style.setProperty('--c-keys-func-shadow', this.colors.funcShad);
+      this.body.style.setProperty('--c-keys-equal', this.colors.equal);
+      this.body.style.setProperty('--c-keys-equal-shadow', this.colors.eqShad);
+      this.body.style.setProperty('--c-toggle', this.colors.equal);
+      this.body.style.setProperty('--c-keys', this.colors.numbers);
+      this.body.style.setProperty('--c-keys-shadow', this.colors.numShad);
+      this.body.style.setProperty('--c-text-primary', this.colors.primary);
+      this.body.style.setProperty('--c-text-secondary', this.colors.secondary);
+      this.body.style.setProperty('--c-text-header', this.colors.secondary);
+      this.body.style.setProperty('--c-text-display', this.colors.secondary);
+    } // Remove custom theme variables from body.
+
+  }, {
+    key: "removeCustomTheme",
+    value: function removeCustomTheme() {
+      this.body.style.removeProperty('--c-bg-main');
+      this.body.style.removeProperty('--c-bg-keypad');
+      this.body.style.removeProperty('--c-bg-toggle');
+      this.body.style.removeProperty('--c-bg-screen');
+      this.body.style.removeProperty('--c-keys-func');
+      this.body.style.removeProperty('--c-keys-func-shadow');
+      this.body.style.removeProperty('--c-keys-equal');
+      this.body.style.removeProperty('--c-keys-equal-shadow');
+      this.body.style.removeProperty('--c-toggle');
+      this.body.style.removeProperty('--c-keys');
+      this.body.style.removeProperty('--c-keys-shadow');
+      this.body.style.removeProperty('--c-text-primary');
+      this.body.style.removeProperty('--c-text-secondary');
+      this.body.style.removeProperty('--c-text-header');
+      this.body.style.removeProperty('--c-text-display');
+    } // Fetch colors object from local storage and assign it to variable
+
+  }, {
+    key: "getColors",
+    value: function getColors() {
+      this.colors = JSON.parse(localStorage.getItem('colors'));
     }
   }]);
 
