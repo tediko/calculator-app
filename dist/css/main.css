@@ -365,6 +365,13 @@ i {
   outline: 2px solid #e63946;
   outline-offset: 2px;
 }
+.theme-modal__generator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
 .theme-modal__select {
   position: relative;
   margin-bottom: 30px;
