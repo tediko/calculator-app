@@ -18,8 +18,10 @@
 
     /* Class to add transition after initial page load */
     &.enable-transition {
-        #{$root}__title, #{$root}__text,
-        #{$root}__label, #{$root}__display-value {
+        #{$root}__title,
+        #{$root}__text,
+        #{$root}__label,
+        #{$root}__display-value {
             transition: color 700ms ease-in-out;
         }
 
@@ -29,7 +31,9 @@
                         box-shadow 700ms ease-in-out;
         }
 
-        #{$root}__toggle, #{$root}__display, #{$root}__keypad {
+        #{$root}__toggle,
+        #{$root}__display,
+        #{$root}__keypad {
             transition: background-color 700ms ease-in-out;
         }
 
