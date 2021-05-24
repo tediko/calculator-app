@@ -78,11 +78,12 @@ export default class ThemeModal {
         this.checkActiveInput(this.previousTheme);
     }
 
-    // Save theme, colors.
+
+    // Save modal
     save() {
         this.saveToLocalStorage();
         this.themeSwitch.displayCustomTheme();
-        this.themeSwitch.saveToLocalStorage(`${this.selectors.customTheme}`);
+        this.themeSwitch.saveThemeToLocalStorage(`${this.selectors.customTheme}`);
         this.modal.classList.remove(`${this.selectors.activeClass}`);
     }
 
@@ -110,7 +111,7 @@ export default class ThemeModal {
         this.colors[colorType] = color;
     }
 
-    // Save to localStorage
+    // Save colors to localStorage
     saveToLocalStorage() {
         localStorage.setItem('colors', JSON.stringify(this.colors));
     }
@@ -120,7 +121,7 @@ export default class ThemeModal {
         this.body.dataset.theme = theme;
     }
 
-    // Returns input element and set attribute checked=true on it
+    // Returns input element and set attribute checked on it
     checkActiveInput(inputDataset) {
         this.currentInput = document.querySelector(`[${this.selectors.inputDataset}="${inputDataset}"]`);
         this.currentInput.checked = true;

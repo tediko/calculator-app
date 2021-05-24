@@ -128,14 +128,14 @@ var ThemeModal = /*#__PURE__*/function () {
       this.setBodyTheme(this.previousTheme);
       this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
       this.checkActiveInput(this.previousTheme);
-    } // Save theme, colors.
+    } // Save modal
 
   }, {
     key: "save",
     value: function save() {
       this.saveToLocalStorage();
       this.themeSwitch.displayCustomTheme();
-      this.themeSwitch.saveToLocalStorage("".concat(this.selectors.customTheme));
+      this.themeSwitch.saveThemeToLocalStorage("".concat(this.selectors.customTheme));
       this.modal.classList.remove("".concat(this.selectors.activeClass));
     } // Create new Picker class and display palette with colors
 
@@ -166,7 +166,7 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "setColors",
     value: function setColors(colorType, color) {
       this.colors[colorType] = color;
-    } // Save to localStorage
+    } // Save colors to localStorage
 
   }, {
     key: "saveToLocalStorage",
@@ -178,7 +178,7 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "setBodyTheme",
     value: function setBodyTheme(theme) {
       this.body.dataset.theme = theme;
-    } // Returns input element and set attribute checked=true on it
+    } // Returns input element and set attribute checked on it
 
   }, {
     key: "checkActiveInput",
@@ -250,7 +250,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
         input.addEventListener('focus', function () {
           _this.toggleTheme(input);
 
-          _this.saveToLocalStorage();
+          _this.saveThemeToLocalStorage();
         });
       });
     } // Change body data-attribute to chosen theme
@@ -269,8 +269,8 @@ var ThemeSwitch = /*#__PURE__*/function () {
     } // Save chosen theme to local storage
 
   }, {
-    key: "saveToLocalStorage",
-    value: function saveToLocalStorage(theme) {
+    key: "saveThemeToLocalStorage",
+    value: function saveThemeToLocalStorage(theme) {
       localStorage.setItem('theme', JSON.stringify("".concat(theme || this.newTheme)));
     } // This function is used on init.
     // Set active theme and add classList to enable transitions on page.
