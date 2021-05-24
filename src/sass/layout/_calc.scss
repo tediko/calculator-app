@@ -224,7 +224,7 @@
         border: none;
         background-color: transparent;
         font-size: clamp(1.2rem, 3vw, 1.5rem);
-        color: $c-text-header;
+        color: $c-text-display;
         cursor: pointer;
 
         &:focus {
@@ -254,7 +254,7 @@
     }
 
     &__display-value {
-        color: $c-text-header;
+        color: $c-text-display;
         justify-self: end;
         font-weight: 700;
 
