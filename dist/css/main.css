@@ -548,7 +548,8 @@ i {
 .calc.enable-transition .calc__label,
 .calc.enable-transition .calc__display-value,
 .calc.enable-transition .calc__display-value--current,
-.calc.enable-transition .calc__display-value--previous {
+.calc.enable-transition .calc__display-value--previous,
+.calc.enable-transition .calc__display-settings {
   transition: color 700ms ease-in-out;
 }
 .calc.enable-transition .calc__key, .calc.enable-transition .calc__key--spec, .calc.enable-transition .calc__key--equal, .calc.enable-transition .calc__key--num, .calc.enable-transition .calc__key--func {
@@ -724,7 +725,7 @@ i {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   color: var(--c-text-header);
   cursor: pointer;
-  transition: color 300ms ease-in;
+  /* transition: color 300ms ease-in; */
 }
 .calc__display-settings:focus {
   outline: none;
