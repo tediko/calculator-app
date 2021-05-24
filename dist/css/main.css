@@ -725,7 +725,6 @@ i {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   color: var(--c-text-header);
   cursor: pointer;
-  /* transition: color 300ms ease-in; */
 }
 .calc__display-settings:focus {
   outline: none;

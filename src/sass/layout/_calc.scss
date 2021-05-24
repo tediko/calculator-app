@@ -226,7 +226,6 @@
         font-size: clamp(1.2rem, 3vw, 1.5rem);
         color: $c-text-header;
         cursor: pointer;
-        /* transition: color 300ms ease-in; */
 
         &:focus {
             outline: none;
