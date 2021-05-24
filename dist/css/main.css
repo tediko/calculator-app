@@ -299,8 +299,8 @@ body[data-theme=custom] {
 
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?e6c71d");
-  src: url("../fonts/icomoon.eot?e6c71d#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?e6c71d") format("truetype"), url("../fonts/icomoon.woff?e6c71d") format("woff"), url("../fonts/icomoon.svg?e6c71d#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?1jqhz1");
+  src: url("../fonts/icomoon.eot?1jqhz1#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?1jqhz1") format("truetype"), url("../fonts/icomoon.woff?1jqhz1") format("woff"), url("../fonts/icomoon.svg?1jqhz1#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -324,6 +324,10 @@ i {
 
 .i-cog:before {
   content: "";
+}
+
+.i-save:before {
+  content: "";
 }
 
 .theme-modal {
