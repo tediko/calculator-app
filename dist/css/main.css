@@ -369,6 +369,7 @@ i {
 .theme-modal__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
 }
 .theme-modal__title {
@@ -377,6 +378,9 @@ i {
 }
 .theme-modal__title-icon {
   margin-right: 10px;
+}
+.theme-modal__cta-wrapper {
+  display: flex;
 }
 .theme-modal__cta, .theme-modal__cta--close, .theme-modal__cta--save {
   border: none;
