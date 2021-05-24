@@ -16,6 +16,7 @@ export default class ThemeModal {
             closeButton: 'data-modal-close',
             colorButtons: 'data-theme-picker',
             colorGeneratorWrapper: 'data-color-generator',
+            overlayWrapper: 'data-overlay',
             inputDataset: 'data-theme-input',
             customTheme: 'custom',
             activeClass: 'active'
@@ -28,7 +29,8 @@ export default class ThemeModal {
         this.closeButton = document.querySelector(`[${this.selectors.closeButton}]`);
         this.colorButtons = document.querySelectorAll(`[${this.selectors.colorButtons}]`);
         this.colorGeneratorWrapper = document.querySelector(`[${this.selectors.colorGeneratorWrapper}]`);
-        if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false;
+        this.overlayWrapper = document.querySelector(`[${this.selectors.overlayWrapper}]`);
+        if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
 
         // Get colors from local storage or use empty object
         this.colors = JSON.parse(localStorage.getItem('colors')) || {
@@ -64,6 +66,7 @@ export default class ThemeModal {
     // Display modal
     toggle() {
         this.modal.classList.add(`${this.selectors.activeClass}`);
+        this.overlayWrapper.classList.add(`${this.selectors.activeClass}`);
         this.previousTheme = this.body.dataset.theme;
         this.setBodyTheme(this.selectors.customTheme);
         this.themeSwitch.displayCustomTheme();
@@ -73,6 +76,7 @@ export default class ThemeModal {
     // Hide modal
     close() {
         this.modal.classList.remove(`${this.selectors.activeClass}`);
+        this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
         this.setBodyTheme(this.previousTheme);
         this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
         this.checkActiveInput(this.previousTheme);
@@ -81,6 +85,7 @@ export default class ThemeModal {
 
     // Save modal
     save() {
+        this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
         this.saveToLocalStorage();
         this.themeSwitch.displayCustomTheme();
         this.themeSwitch.saveThemeToLocalStorage(`${this.selectors.customTheme}`);
