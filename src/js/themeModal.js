@@ -9,19 +9,26 @@ export default class ThemeModal {
     
     vars() {
         this.selectors = {
+            body: 'data-theme',
             modal: 'data-modal',
             toggleButton: 'data-settings',
+            saveButton: 'data-modal-save',
             closeButton: 'data-modal-close',
             colorButtons: 'data-theme-picker',
             colorGeneratorWrapper: 'data-color-generator',
+            inputDataset: 'data-theme-input',
+            customTheme: 'custom',
+            activeClass: 'active'
         }
 
+        this.body = document.querySelector(`[${this.selectors.body}]`);
         this.modal = document.querySelector(`[${this.selectors.modal}]`);
+        this.saveButton = document.querySelector(`[${this.selectors.saveButton}]`);
         this.toggleButton = document.querySelector(`[${this.selectors.toggleButton}]`);
         this.closeButton = document.querySelector(`[${this.selectors.closeButton}]`);
         this.colorButtons = document.querySelectorAll(`[${this.selectors.colorButtons}]`);
         this.colorGeneratorWrapper = document.querySelector(`[${this.selectors.colorGeneratorWrapper}]`);
-        if (!this.modal || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false;
+        if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false;
 
         // Get colors from local storage or use empty object
         this.colors = JSON.parse(localStorage.getItem('colors')) || {
@@ -39,6 +46,8 @@ export default class ThemeModal {
         }
         this.themeSwitch = new ThemeSwitch();
         this.created = false;
+        this.previousTheme;
+        this.currentTheme;
 
         return true;
     }
@@ -46,6 +55,7 @@ export default class ThemeModal {
     setupEvents() {
         this.toggleButton.addEventListener('click', () => this.toggle());
         this.closeButton.addEventListener('click', () => this.close());
+        this.saveButton.addEventListener('click', () => this.save());
         this.colorButtons.forEach(button => {
             button.addEventListener('click', () => this.selectColor(button));
         })
@@ -53,15 +63,27 @@ export default class ThemeModal {
 
     // Display modal
     toggle() {
-        this.modal.classList.add('active');
+        this.modal.classList.add(`${this.selectors.activeClass}`);
+        this.previousTheme = this.body.dataset.theme;
+        this.setBodyTheme(this.selectors.customTheme);
+        this.themeSwitch.displayCustomTheme();
+        this.checkActiveInput(this.selectors.customTheme);
     }
-
+    
     // Hide modal
     close() {
-        this.modal.classList.remove('active');
+        this.modal.classList.remove(`${this.selectors.activeClass}`);
+        this.setBodyTheme(this.previousTheme);
+        this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
+        this.checkActiveInput(this.previousTheme);
+    }
+
+    // Save theme, colors.
+    save() {
         this.saveToLocalStorage();
         this.themeSwitch.displayCustomTheme();
-        this.themeSwitch.saveToLocalStorage('custom');
+        this.themeSwitch.saveToLocalStorage(`${this.selectors.customTheme}`);
+        this.modal.classList.remove(`${this.selectors.activeClass}`);
     }
 
     // Create new Picker class and display palette with colors
@@ -88,8 +110,19 @@ export default class ThemeModal {
         this.colors[colorType] = color;
     }
 
-    /* Save to localStorage */
+    // Save to localStorage
     saveToLocalStorage() {
         localStorage.setItem('colors', JSON.stringify(this.colors));
+    }
+
+    // Sets data-theme attribute for body element
+    setBodyTheme(theme) {
+        this.body.dataset.theme = theme;
+    }
+
+    // Returns input element and set attribute checked=true on it
+    checkActiveInput(inputDataset) {
+        this.currentInput = document.querySelector(`[${this.selectors.inputDataset}="${inputDataset}"]`);
+        this.currentInput.checked = true;
     }
 }

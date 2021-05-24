@@ -51,18 +51,25 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "vars",
     value: function vars() {
       this.selectors = {
+        body: 'data-theme',
         modal: 'data-modal',
         toggleButton: 'data-settings',
+        saveButton: 'data-modal-save',
         closeButton: 'data-modal-close',
         colorButtons: 'data-theme-picker',
-        colorGeneratorWrapper: 'data-color-generator'
+        colorGeneratorWrapper: 'data-color-generator',
+        inputDataset: 'data-theme-input',
+        customTheme: 'custom',
+        activeClass: 'active'
       };
+      this.body = document.querySelector("[".concat(this.selectors.body, "]"));
       this.modal = document.querySelector("[".concat(this.selectors.modal, "]"));
+      this.saveButton = document.querySelector("[".concat(this.selectors.saveButton, "]"));
       this.toggleButton = document.querySelector("[".concat(this.selectors.toggleButton, "]"));
       this.closeButton = document.querySelector("[".concat(this.selectors.closeButton, "]"));
       this.colorButtons = document.querySelectorAll("[".concat(this.selectors.colorButtons, "]"));
       this.colorGeneratorWrapper = document.querySelector("[".concat(this.selectors.colorGeneratorWrapper, "]"));
-      if (!this.modal || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false; // Get colors from local storage or use empty object
+      if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper) return false; // Get colors from local storage or use empty object
 
       this.colors = JSON.parse(localStorage.getItem('colors')) || {
         main: '',
@@ -79,6 +86,8 @@ var ThemeModal = /*#__PURE__*/function () {
       };
       this.themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_1__.default();
       this.created = false;
+      this.previousTheme;
+      this.currentTheme;
       return true;
     }
   }, {
@@ -92,6 +101,9 @@ var ThemeModal = /*#__PURE__*/function () {
       this.closeButton.addEventListener('click', function () {
         return _this.close();
       });
+      this.saveButton.addEventListener('click', function () {
+        return _this.save();
+      });
       this.colorButtons.forEach(function (button) {
         button.addEventListener('click', function () {
           return _this.selectColor(button);
@@ -102,16 +114,29 @@ var ThemeModal = /*#__PURE__*/function () {
   }, {
     key: "toggle",
     value: function toggle() {
-      this.modal.classList.add('active');
+      this.modal.classList.add("".concat(this.selectors.activeClass));
+      this.previousTheme = this.body.dataset.theme;
+      this.setBodyTheme(this.selectors.customTheme);
+      this.themeSwitch.displayCustomTheme();
+      this.checkActiveInput(this.selectors.customTheme);
     } // Hide modal
 
   }, {
     key: "close",
     value: function close() {
-      this.modal.classList.remove('active');
+      this.modal.classList.remove("".concat(this.selectors.activeClass));
+      this.setBodyTheme(this.previousTheme);
+      this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
+      this.checkActiveInput(this.previousTheme);
+    } // Save theme, colors.
+
+  }, {
+    key: "save",
+    value: function save() {
       this.saveToLocalStorage();
       this.themeSwitch.displayCustomTheme();
-      this.themeSwitch.saveToLocalStorage('custom');
+      this.themeSwitch.saveToLocalStorage("".concat(this.selectors.customTheme));
+      this.modal.classList.remove("".concat(this.selectors.activeClass));
     } // Create new Picker class and display palette with colors
 
   }, {
@@ -141,13 +166,25 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "setColors",
     value: function setColors(colorType, color) {
       this.colors[colorType] = color;
-    }
-    /* Save to localStorage */
+    } // Save to localStorage
 
   }, {
     key: "saveToLocalStorage",
     value: function saveToLocalStorage() {
       localStorage.setItem('colors', JSON.stringify(this.colors));
+    } // Sets data-theme attribute for body element
+
+  }, {
+    key: "setBodyTheme",
+    value: function setBodyTheme(theme) {
+      this.body.dataset.theme = theme;
+    } // Returns input element and set attribute checked=true on it
+
+  }, {
+    key: "checkActiveInput",
+    value: function checkActiveInput(inputDataset) {
+      this.currentInput = document.querySelector("[".concat(this.selectors.inputDataset, "=\"").concat(inputDataset, "\"]"));
+      this.currentInput.checked = true;
     }
   }]);
 
