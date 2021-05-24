@@ -210,6 +210,14 @@
         &--secondary {
             background-color: $c-text-secondary;
         }
+        
+        &--display {
+            background-color: $c-text-display;
+        }
+
+        &--header {
+            background-color: $c-text-header;
+        }
     }
 
     &__name {

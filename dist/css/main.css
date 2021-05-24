@@ -508,6 +508,12 @@ i {
 .theme-modal__picker--secondary {
   background-color: var(--c-text-secondary);
 }
+.theme-modal__picker--display {
+  background-color: var(--c-text-display);
+}
+.theme-modal__picker--header {
+  background-color: var(--c-text-header);
+}
 .theme-modal__name {
   font-size: 0.90625rem;
   font-weight: 400;
@@ -723,7 +729,7 @@ i {
   border: none;
   background-color: transparent;
   font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: var(--c-text-header);
+  color: var(--c-text-display);
   cursor: pointer;
 }
 .calc__display-settings:focus {
@@ -750,7 +756,7 @@ i {
   }
 }
 .calc__display-value, .calc__display-value--current, .calc__display-value--previous {
-  color: var(--c-text-header);
+  color: var(--c-text-display);
   justify-self: end;
   font-weight: 700;
 }
