@@ -54,12 +54,10 @@
         margin-right: 10px;
     }
 
-    &__close-cta {
+    &__cta {
         border: none;
-        background-color: transparent;
-        font-size: 1.3rem;
-        color: $c-red;
         cursor: pointer;
+        background-color: transparent;
 
         &:focus {
             outline: none;
@@ -68,6 +66,24 @@
         &:focus-visible {
             outline: 2px solid $c-red;
             outline-offset: 2px;
+        }
+
+        &--save {
+            @extend #{$root}__cta;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: $c-blue-darker;
+            color: $c-white;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
+
+        &--close {
+            @extend #{$root}__cta;
+            color: $c-red;
+            font-size: 1.3rem;
         }
     }
 
