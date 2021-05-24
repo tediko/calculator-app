@@ -344,7 +344,7 @@ i {
   -webkit-animation: themeModalSlide 500ms ease-in-out forwards;
           animation: themeModalSlide 500ms ease-in-out forwards;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .theme-modal.active {
     -webkit-animation: themeModalSlideDesktop 500ms ease-in-out forwards;
             animation: themeModalSlideDesktop 500ms ease-in-out forwards;
@@ -359,7 +359,7 @@ i {
     margin: 0 auto;
   }
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .theme-modal {
     top: 50%;
     transform: translateY(-50%);
@@ -404,7 +404,7 @@ i {
   text-transform: uppercase;
   margin-right: 8px;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .theme-modal__cta--save {
     padding: 10px 15px;
     margin-right: 20px;
@@ -552,7 +552,7 @@ i {
   transition: margin 250ms ease-in;
   /* Class to add transition after initial page load */
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc {
     margin-top: 76px;
   }
@@ -630,7 +630,7 @@ i {
 .calc__switch .calc__input:nth-of-type(4):checked ~ .calc__toggle::before {
   left: calc(100% - 13px);
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__switch .calc__label:nth-of-type(1):hover ~ .calc__toggle::after {
     opacity: 1;
     transition: opacity 250ms ease-in;
@@ -720,7 +720,7 @@ i {
   transition: height 250ms ease-in;
   padding: 10px 24px;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__display {
     padding: 10px 31px;
   }
@@ -750,7 +750,7 @@ i {
   -webkit-animation: iconRotate 3s linear infinite;
           animation: iconRotate 3s linear infinite;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__display-settings {
     top: 5px;
     left: 5px;
@@ -791,7 +791,7 @@ i {
   z-index: 0;
   transition: padding 250ms ease-in;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__keypad {
     padding: 31px 31px 37px 31px;
   }
@@ -817,7 +817,7 @@ i {
 .calc__key:active::before, .calc__key--spec:active::before, .calc__key--equal:active::before, .calc__key--num:active::before, .calc__key--func:active::before {
   display: none;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__key, .calc__key--spec, .calc__key--equal, .calc__key--num, .calc__key--func {
     font-size: 2rem;
     border-radius: 10px;
@@ -838,7 +838,7 @@ i {
   font-size: 1.0625rem;
   color: var(--c-text-secondary);
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .calc__key--spec, .calc__key--equal {
     font-size: 1.25rem;
   }
