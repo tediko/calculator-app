@@ -44,7 +44,9 @@ export default class ThemeModal {
             equal: '',
             eqShad: '',
             primary: '',
-            secondary: ''
+            secondary: '',
+            display: '',
+            header: ''
         }
         this.themeSwitch = new ThemeSwitch();
         this.created = false;

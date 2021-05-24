@@ -97,8 +97,8 @@ export default class ThemeSwitch {
         this.body.style.setProperty('--c-keys-shadow', this.colors.numShad);
         this.body.style.setProperty('--c-text-primary', this.colors.primary);
         this.body.style.setProperty('--c-text-secondary', this.colors.secondary);
-        this.body.style.setProperty('--c-text-header', this.colors.secondary);
-        this.body.style.setProperty('--c-text-display', this.colors.secondary);
+        this.body.style.setProperty('--c-text-header', this.colors.header);
+        this.body.style.setProperty('--c-text-display', this.colors.display);
     }
 
     // Remove custom theme variables from body.
