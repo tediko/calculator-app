@@ -286,7 +286,7 @@ body[data-theme=custom] {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 0;
   z-index: 998;
   transition: opacity 500ms ease-in-out;
@@ -294,7 +294,6 @@ body[data-theme=custom] {
 .overlay.active {
   visibility: visible;
   opacity: 1;
-  pointer-events: none;
 }
 
 @font-face {
