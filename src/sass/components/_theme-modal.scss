@@ -75,7 +75,7 @@
 
         &--save {
             @extend #{$root}__cta;
-            padding: 10px 15px;
+            padding: 5px 6px;
             border-radius: 5px;
             background: $c-blue-darker;
             color: $c-white;
@@ -83,7 +83,12 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-right: 20px;
+            margin-right: 8px;
+
+            @include breakpoint('md') {
+                padding: 10px 15px;
+                margin-right: 20px;
+            }
         }
 
         &--close {

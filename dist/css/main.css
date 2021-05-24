@@ -394,7 +394,7 @@ i {
   outline-offset: 2px;
 }
 .theme-modal__cta--save {
-  padding: 10px 15px;
+  padding: 5px 6px;
   border-radius: 5px;
   background: #457b9d;
   color: #ffffff;
@@ -402,7 +402,13 @@ i {
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-right: 20px;
+  margin-right: 8px;
+}
+@media (min-width: 769px) {
+  .theme-modal__cta--save {
+    padding: 10px 15px;
+    margin-right: 20px;
+  }
 }
 .theme-modal__cta--close {
   color: #e63946;
