@@ -33,7 +33,7 @@ export default class ThemeSwitch {
         this.inputs.forEach(input => {
             input.addEventListener('focus', () => {
                 this.toggleTheme(input);
-                this.saveToLocalStorage();
+                this.saveThemeToLocalStorage();
             })
         })
     }
@@ -51,7 +51,7 @@ export default class ThemeSwitch {
     }
 
     // Save chosen theme to local storage
-    saveToLocalStorage(theme) {
+    saveThemeToLocalStorage(theme) {
         localStorage.setItem('theme', JSON.stringify(`${theme || this.newTheme}`));
     }
 
