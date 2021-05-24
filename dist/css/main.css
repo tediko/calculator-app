@@ -423,8 +423,10 @@ i {
 }
 .theme-modal__select {
   position: relative;
-  margin-bottom: 30px;
   overflow: hidden;
+}
+.theme-modal__select:not(:last-child) {
+  margin-bottom: 30px;
 }
 .theme-modal__subtitle {
   position: relative;

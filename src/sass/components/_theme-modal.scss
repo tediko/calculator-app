@@ -108,8 +108,11 @@
 
     &__select {
         position: relative;
-        margin-bottom: 30px;
         overflow: hidden;
+
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
     }
 
     &__subtitle {
