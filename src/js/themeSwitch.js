@@ -88,7 +88,6 @@ export default class ThemeSwitch {
 
     // Add custom theme variables to body.
     displayCustomTheme() {
-        this.getColors();
         this.body.style.setProperty('--c-bg-main', this.getColors().main);
         this.body.style.setProperty('--c-bg-keypad', this.getColors().keypad);
         this.body.style.setProperty('--c-bg-toggle', this.getColors().keypad);
@@ -132,8 +131,8 @@ export default class ThemeSwitch {
     getColors() {
         return JSON.parse(localStorage.getItem('colors')) || 
             {
-                main: 'hsl(234.8,21.1%,21.4%)',
-                screen: 'hsl(204.9,100%,24.1%)',
+                main: 'hsl(192,92.5%,41.1%)',
+                screen: 'hsl(28.2,100%,42.1%)',
                 keypad: 'hsl(204.9,100%,24.1%)',
                 numbers: 'hsl(206.6,100%,52.6%)',
                 numShad: 'hsl(201.9,100%,33.1%)',
