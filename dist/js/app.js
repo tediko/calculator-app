@@ -71,10 +71,10 @@ var ThemeModal = /*#__PURE__*/function () {
       this.colorButtons = document.querySelectorAll("[".concat(this.selectors.colorButtons, "]"));
       this.colorGeneratorWrapper = document.querySelector("[".concat(this.selectors.colorGeneratorWrapper, "]"));
       this.overlayWrapper = document.querySelector("[".concat(this.selectors.overlayWrapper, "]"));
-      if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false; // Get colors from local storage or use empty object
-
+      if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
       this.themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_1__.default();
-      this.colors = this.themeSwitch.getColors();
+      this.colors = this.themeSwitch.getColors(); // Get colors from local storage or use empty object with default colors
+
       this.created = false;
       this.previousTheme;
       this.currentTheme;
@@ -143,7 +143,12 @@ var ThemeModal = /*#__PURE__*/function () {
       this.themeSwitch.displayCustomTheme();
       this.themeSwitch.saveThemeToLocalStorage("".concat(this.selectors.customTheme));
       this.modal.classList.remove("".concat(this.selectors.activeClass));
-    } // Create new Picker class and display palette with colors
+    }
+    /**
+    * Create new Picker class and display palette with colors.
+    * Save picked colors with setColors function. 
+    * @param    {Element} button    Element for picker parent
+    */
 
   }, {
     key: "selectColor",
@@ -166,7 +171,12 @@ var ThemeModal = /*#__PURE__*/function () {
           pick = null;
         }
       });
-    } // Assign new colors to colors object
+    }
+    /**
+    * Assign new colors to colors object
+    * @param    {String} colorType    Name of color type
+    * @param    {String} color    color
+    */
 
   }, {
     key: "setColors",
@@ -178,13 +188,22 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "saveToLocalStorage",
     value: function saveToLocalStorage() {
       localStorage.setItem('colors', JSON.stringify(this.colors));
-    } // Sets data-theme attribute for body element
+    }
+    /**
+    * Sets data-theme attribute for body element
+    * @param    {String}    theme    Name of theme
+    */
 
   }, {
     key: "setBodyTheme",
     value: function setBodyTheme(theme) {
       this.body.dataset.theme = theme;
-    } // Returns input element and set attribute checked on it
+    }
+    /**
+    * Assign input with passed name to variable.
+    * Set attribute checked on that element.
+    * @param    {String}    inputDataset    Name of input data-attribute value
+    */
 
   }, {
     key: "checkActiveInput",

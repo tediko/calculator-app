@@ -31,11 +31,9 @@ export default class ThemeModal {
         this.colorGeneratorWrapper = document.querySelector(`[${this.selectors.colorGeneratorWrapper}]`);
         this.overlayWrapper = document.querySelector(`[${this.selectors.overlayWrapper}]`);
         if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
-
-        // Get colors from local storage or use empty object
         
         this.themeSwitch = new ThemeSwitch();
-        this.colors = this.themeSwitch.getColors();
+        this.colors = this.themeSwitch.getColors(); // Get colors from local storage or use empty object with default colors
         this.created = false;
         this.previousTheme;
         this.currentTheme;
@@ -91,7 +89,11 @@ export default class ThemeModal {
         this.modal.classList.remove(`${this.selectors.activeClass}`);
     }
 
-    // Create new Picker class and display palette with colors
+    /**
+    * Create new Picker class and display palette with colors.
+    * Save picked colors with setColors function. 
+    * @param    {Element} button    Element for picker parent
+    */
     selectColor(button) {
         if (this.created) return;
         this.created = true;
@@ -110,7 +112,11 @@ export default class ThemeModal {
         })
     }
 
-    // Assign new colors to colors object
+    /**
+    * Assign new colors to colors object
+    * @param    {String} colorType    Name of color type
+    * @param    {String} color    color
+    */
     setColors(colorType, color) {
         this.colors[colorType] = color;
     }
@@ -120,12 +126,19 @@ export default class ThemeModal {
         localStorage.setItem('colors', JSON.stringify(this.colors));
     }
 
-    // Sets data-theme attribute for body element
+    /**
+    * Sets data-theme attribute for body element
+    * @param    {String}    theme    Name of theme
+    */
     setBodyTheme(theme) {
         this.body.dataset.theme = theme;
     }
 
-    // Returns input element and set attribute checked on it
+    /**
+    * Assign input with passed name to variable.
+    * Set attribute checked on that element.
+    * @param    {String}    inputDataset    Name of input data-attribute value
+    */
     checkActiveInput(inputDataset) {
         this.currentInput = document.querySelector(`[${this.selectors.inputDataset}="${inputDataset}"]`);
         this.currentInput.checked = true;
