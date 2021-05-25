@@ -62,6 +62,12 @@ export default class ThemeModal {
         this.saveButton.addEventListener('click', () => this.save());
         this.colorButtons.forEach(button => {
             button.addEventListener('click', () => this.selectColor(button));
+        });
+        this.modal.addEventListener('keydown', (event) => {
+            let escapeKeyCode = 27;
+            if (event.keyCode == escapeKeyCode) {
+                this.close();
+            }
         })
     }
 

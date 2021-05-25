@@ -113,6 +113,13 @@ var ThemeModal = /*#__PURE__*/function () {
           return _this.selectColor(button);
         });
       });
+      this.modal.addEventListener('keydown', function (event) {
+        var escapeKeyCode = 27;
+
+        if (event.keyCode == escapeKeyCode) {
+          _this.close();
+        }
+      });
     } // Display modal
 
   }, {
