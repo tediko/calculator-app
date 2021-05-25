@@ -118,12 +118,18 @@ var ThemeModal = /*#__PURE__*/function () {
   }, {
     key: "toggle",
     value: function toggle() {
+      var _this2 = this;
+
       this.modal.classList.add("".concat(this.selectors.activeClass));
       this.overlayWrapper.classList.add("".concat(this.selectors.activeClass));
       this.previousTheme = this.body.dataset.theme;
       this.setBodyTheme(this.selectors.customTheme);
       this.themeSwitch.displayCustomTheme();
       this.checkActiveInput(this.selectors.customTheme);
+      this.focusTrap();
+      window.setTimeout(function () {
+        _this2.firstFocusableElement.focus();
+      }, 50);
     } // Hide modal
 
   }, {
@@ -149,7 +155,7 @@ var ThemeModal = /*#__PURE__*/function () {
   }, {
     key: "selectColor",
     value: function selectColor(button) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.created) return;
       this.created = true;
@@ -158,10 +164,10 @@ var ThemeModal = /*#__PURE__*/function () {
         parent: this.colorGeneratorWrapper,
         popup: false,
         onDone: function onDone(color) {
-          _this2.created = false;
+          _this3.created = false;
           button.style.backgroundColor = color.hslString;
 
-          _this2.setColors(colorType, color.hslString);
+          _this3.setColors(colorType, color.hslString);
 
           pick.destroy();
           pick = null;
@@ -192,6 +198,34 @@ var ThemeModal = /*#__PURE__*/function () {
     value: function checkActiveInput(inputDataset) {
       this.currentInput = document.querySelector("[".concat(this.selectors.inputDataset, "=\"").concat(inputDataset, "\"]"));
       this.currentInput.checked = true;
+    } // Function to keep focus inside modal when pressing tab
+
+  }, {
+    key: "focusTrap",
+    value: function focusTrap() {
+      var _this4 = this;
+
+      var focusableElements = 'button';
+      this.firstFocusableElement = this.modal.querySelectorAll(focusableElements)[0];
+      var focusableContent = this.modal.querySelectorAll(focusableElements);
+      var lastFocusableElement = focusableContent[focusableContent.length - 1];
+      document.addEventListener('keydown', function (event) {
+        var isTabPressed = event.key === 'Tab' || event.keyCode === 9;
+        if (!isTabPressed) return;
+
+        if (event.shiftKey) {
+          if (document.activeElement === _this4.firstFocusableElement) {
+            lastFocusableElement.focus();
+            event.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusableElement) {
+            _this4.firstFocusableElement.focus();
+
+            event.preventDefault();
+          }
+        }
+      });
     }
   }]);
 

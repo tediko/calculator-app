@@ -73,6 +73,10 @@ export default class ThemeModal {
         this.setBodyTheme(this.selectors.customTheme);
         this.themeSwitch.displayCustomTheme();
         this.checkActiveInput(this.selectors.customTheme);
+        this.focusTrap();
+        window.setTimeout(() => {
+            this.firstFocusableElement.focus();
+        }, 50)
     }
     
     // Hide modal
@@ -132,5 +136,31 @@ export default class ThemeModal {
     checkActiveInput(inputDataset) {
         this.currentInput = document.querySelector(`[${this.selectors.inputDataset}="${inputDataset}"]`);
         this.currentInput.checked = true;
+    }
+
+    // Function to keep focus inside modal when pressing tab
+    focusTrap() {
+        const focusableElements = 'button';
+        this.firstFocusableElement = this.modal.querySelectorAll(focusableElements)[0];
+        const focusableContent = this.modal.querySelectorAll(focusableElements);
+        const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+
+        document.addEventListener('keydown', (event) => {
+            let isTabPressed = event.key === 'Tab' || event.keyCode === 9;
+            if (!isTabPressed) return;
+
+            if (event.shiftKey) {
+                if (document.activeElement === this.firstFocusableElement) {
+                lastFocusableElement.focus();
+                event.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastFocusableElement) {
+                this.firstFocusableElement.focus();
+                event.preventDefault();
+                }
+            }
+        });
     }
 }
