@@ -28,6 +28,7 @@ export default class ThemeSwitch {
     }
 
     setupEvents() {
+        this.getUserPreferedTheme(this.isThemeSet()); 
         this.setBodyTheme();
 
         this.inputs.forEach(input => {
@@ -38,7 +39,11 @@ export default class ThemeSwitch {
         })
     }
 
-    // Change body data-attribute to chosen theme
+    // 
+    /**
+    * Change body data-attribute to new theme from focused element.
+    * @param    {element} input    Current focused element
+    */
     toggleTheme(input) {
         this.newTheme = input.dataset.themeInput;
         this.body.dataset.theme = this.newTheme;
@@ -59,18 +64,18 @@ export default class ThemeSwitch {
     // Set active theme and add classList to enable transitions on page.
     setBodyTheme() {
         this.body.dataset.theme = this.activeTheme;
-
+        
         if (this.activeTheme == 'custom') {
             this.displayCustomTheme();
         }
-
+        
         this.inputs.forEach(input => {
             let inputTheme = input.dataset.themeInput;
             let delay = 50;
             
             if (inputTheme == this.activeTheme) {
-                input.setAttribute('checked', '');
-
+                input.checked = true;
+                
                 window.setTimeout(() => {
                     this.calc.classList.add(`${this.selectors.enableTransitions}`);
                     this.componentWrapper.classList.add(`${this.selectors.enableTransitions}`);
@@ -123,5 +128,32 @@ export default class ThemeSwitch {
     // Fetch colors object from local storage and assign it to variable
     getColors() {
         this.colors = JSON.parse(localStorage.getItem('colors'));
+    }
+
+    /**
+    * Checks if any theme is saved in local storage
+    * @return   {Boolean}         Boolean value
+    */
+    isThemeSet() {
+        if (JSON.parse(localStorage.getItem('theme')) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+    * Function that check prefered user color scheme. 
+    * Prefered color is saved in local storage.
+    * @param    {Boolean} isThemeSet    Boolean value
+    */
+    getUserPreferedTheme(isThemeSet) {
+        if (isThemeSet) return false;
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            this.saveThemeToLocalStorage(this.selectors.darkTheme);
+        } else {
+            this.saveThemeToLocalStorage(this.selectors.lightTheme);
+        }
     }
 }

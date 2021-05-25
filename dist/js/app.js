@@ -252,6 +252,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
     value: function setupEvents() {
       var _this = this;
 
+      this.getUserPreferedTheme(this.isThemeSet());
       this.setBodyTheme();
       this.inputs.forEach(function (input) {
         input.addEventListener('focus', function () {
@@ -260,7 +261,12 @@ var ThemeSwitch = /*#__PURE__*/function () {
           _this.saveThemeToLocalStorage();
         });
       });
-    } // Change body data-attribute to chosen theme
+    } // 
+
+    /**
+    * Change body data-attribute to new theme from focused element.
+    * @param    {element} input    Current focused element
+    */
 
   }, {
     key: "toggleTheme",
@@ -298,7 +304,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
         var delay = 50;
 
         if (inputTheme == _this2.activeTheme) {
-          input.setAttribute('checked', '');
+          input.checked = true;
           window.setTimeout(function () {
             _this2.calc.classList.add("".concat(_this2.selectors.enableTransitions));
 
@@ -355,6 +361,37 @@ var ThemeSwitch = /*#__PURE__*/function () {
     key: "getColors",
     value: function getColors() {
       this.colors = JSON.parse(localStorage.getItem('colors'));
+    }
+    /**
+    * Checks if any theme is saved in local storage
+    * @return   {Boolean}         Boolean value
+    */
+
+  }, {
+    key: "isThemeSet",
+    value: function isThemeSet() {
+      if (JSON.parse(localStorage.getItem('theme')) == null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    /**
+    * Function that check prefered user color scheme. 
+    * Prefered color is saved in local storage.
+    * @param    {Boolean} isThemeSet    Boolean value
+    */
+
+  }, {
+    key: "getUserPreferedTheme",
+    value: function getUserPreferedTheme(isThemeSet) {
+      if (isThemeSet) return false;
+
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        this.saveThemeToLocalStorage(this.selectors.darkTheme);
+      } else {
+        this.saveThemeToLocalStorage(this.selectors.lightTheme);
+      }
     }
   }]);
 
@@ -1522,7 +1559,7 @@ var Picker = function () {
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk_37Calculator_app"] = self["webpackChunk_37Calculator_app"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkcalculator_app"] = self["webpackChunkcalculator_app"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
