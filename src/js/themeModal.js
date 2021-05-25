@@ -33,22 +33,9 @@ export default class ThemeModal {
         if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
 
         // Get colors from local storage or use empty object
-        this.colors = JSON.parse(localStorage.getItem('colors')) || {
-            main: '',
-            screen: '',
-            keypad: '',
-            numbers: '',
-            numShad: '',
-            functions: '',
-            funcShad: '',
-            equal: '',
-            eqShad: '',
-            primary: '',
-            secondary: '',
-            display: '',
-            header: ''
-        }
+        
         this.themeSwitch = new ThemeSwitch();
+        this.colors = this.themeSwitch.getColors();
         this.created = false;
         this.previousTheme;
         this.currentTheme;

@@ -73,22 +73,8 @@ var ThemeModal = /*#__PURE__*/function () {
       this.overlayWrapper = document.querySelector("[".concat(this.selectors.overlayWrapper, "]"));
       if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false; // Get colors from local storage or use empty object
 
-      this.colors = JSON.parse(localStorage.getItem('colors')) || {
-        main: '',
-        screen: '',
-        keypad: '',
-        numbers: '',
-        numShad: '',
-        functions: '',
-        funcShad: '',
-        equal: '',
-        eqShad: '',
-        primary: '',
-        secondary: '',
-        display: '',
-        header: ''
-      };
       this.themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_1__.default();
+      this.colors = this.themeSwitch.getColors();
       this.created = false;
       this.previousTheme;
       this.currentTheme;
@@ -360,22 +346,21 @@ var ThemeSwitch = /*#__PURE__*/function () {
   }, {
     key: "displayCustomTheme",
     value: function displayCustomTheme() {
-      this.getColors();
-      this.body.style.setProperty('--c-bg-main', this.colors.main);
-      this.body.style.setProperty('--c-bg-keypad', this.colors.keypad);
-      this.body.style.setProperty('--c-bg-toggle', this.colors.keypad);
-      this.body.style.setProperty('--c-bg-screen', this.colors.screen);
-      this.body.style.setProperty('--c-keys-func', this.colors.functions);
-      this.body.style.setProperty('--c-keys-func-shadow', this.colors.funcShad);
-      this.body.style.setProperty('--c-keys-equal', this.colors.equal);
-      this.body.style.setProperty('--c-keys-equal-shadow', this.colors.eqShad);
-      this.body.style.setProperty('--c-toggle', this.colors.equal);
-      this.body.style.setProperty('--c-keys', this.colors.numbers);
-      this.body.style.setProperty('--c-keys-shadow', this.colors.numShad);
-      this.body.style.setProperty('--c-text-primary', this.colors.primary);
-      this.body.style.setProperty('--c-text-secondary', this.colors.secondary);
-      this.body.style.setProperty('--c-text-header', this.colors.header);
-      this.body.style.setProperty('--c-text-display', this.colors.display);
+      this.body.style.setProperty('--c-bg-main', this.getColors().main);
+      this.body.style.setProperty('--c-bg-keypad', this.getColors().keypad);
+      this.body.style.setProperty('--c-bg-toggle', this.getColors().keypad);
+      this.body.style.setProperty('--c-bg-screen', this.getColors().screen);
+      this.body.style.setProperty('--c-keys-func', this.getColors().functions);
+      this.body.style.setProperty('--c-keys-func-shadow', this.getColors().funcShad);
+      this.body.style.setProperty('--c-keys-equal', this.getColors().equal);
+      this.body.style.setProperty('--c-keys-equal-shadow', this.getColors().eqShad);
+      this.body.style.setProperty('--c-toggle', this.getColors().equal);
+      this.body.style.setProperty('--c-keys', this.getColors().numbers);
+      this.body.style.setProperty('--c-keys-shadow', this.getColors().numShad);
+      this.body.style.setProperty('--c-text-primary', this.getColors().primary);
+      this.body.style.setProperty('--c-text-secondary', this.getColors().secondary);
+      this.body.style.setProperty('--c-text-header', this.getColors().header);
+      this.body.style.setProperty('--c-text-display', this.getColors().display);
     } // Remove custom theme variables from body.
 
   }, {
@@ -396,12 +381,30 @@ var ThemeSwitch = /*#__PURE__*/function () {
       this.body.style.removeProperty('--c-text-secondary');
       this.body.style.removeProperty('--c-text-header');
       this.body.style.removeProperty('--c-text-display');
-    } // Fetch colors object from local storage and assign it to variable
+    }
+    /**
+    * Fetch colors object from local storage or use default object
+    * @return   {object}    Object with colors
+    */
 
   }, {
     key: "getColors",
     value: function getColors() {
-      this.colors = JSON.parse(localStorage.getItem('colors'));
+      return JSON.parse(localStorage.getItem('colors')) || {
+        main: 'hsl(192,92.5%,41.1%)',
+        screen: 'hsl(28.2,100%,42.1%)',
+        keypad: 'hsl(204.9,100%,24.1%)',
+        numbers: 'hsl(206.6,100%,52.6%)',
+        numShad: 'hsl(201.9,100%,33.1%)',
+        functions: 'hsl(70,100%,40%)',
+        funcShad: 'hsl(81.2,77%,41%)',
+        equal: 'hsl(43.2,100%,51.6%)',
+        eqShad: 'hsl(23.4,96.6%,46.3%)',
+        primary: 'hsl(0, 0%, 100%)',
+        secondary: 'hsl(0, 0%, 100%)',
+        display: 'hsl(0, 0%, 100%)',
+        header: 'hsl(0, 0%, 100%)'
+      };
     }
     /**
     * Checks if any theme is saved in local storage
