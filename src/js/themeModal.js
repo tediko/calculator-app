@@ -103,6 +103,7 @@ export default class ThemeModal {
         if (this.created) return;
         this.created = true;
         let colorType = button.dataset.themePicker;
+        let buttonCurrentColor = window.getComputedStyle(button).backgroundColor;
 
         setTimeout(() => {
             const editor = document.querySelector('.picker_editor input');
@@ -112,13 +113,14 @@ export default class ThemeModal {
         let pick = new Picker({
             parent: this.colorGeneratorWrapper,
             popup: false,
+            color: buttonCurrentColor,
             onDone: (color) => {
                 setTimeout(() => {
                     this.created = false;
                 }, 100)
                 button.style.backgroundColor = color.hslString;
-                this.setColors(colorType, color.hslString);
                 pick.destroy();
+                this.setColors(colorType, color.hslString);
                 pick = null;
                 button.focus();
             }
