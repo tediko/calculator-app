@@ -116,7 +116,13 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "delete",
     value: function _delete() {
-      this.currentOperand = this.currentOperand.toString().slice(0, -1);
+      if (this.currentOperand === 0) {
+        return;
+      } else if (this.currentOperand.toString().length === 1) {
+        this.currentOperand = 0;
+      } else {
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
+      }
     }
     /**
     * Function that append last clicked number from passed parameter to currentOperand variable

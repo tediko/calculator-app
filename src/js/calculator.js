@@ -66,7 +66,13 @@ export default class calculator {
 
     /* Function that extracts last character from string */
     delete() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1);
+        if (this.currentOperand === 0) {
+            return;
+        } else if (this.currentOperand.toString().length === 1) {
+            this.currentOperand = 0;
+        } else {
+            this.currentOperand = this.currentOperand.toString().slice(0, -1);
+        }
     }
 
     /**
