@@ -11,10 +11,218 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _themeSwitch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./themeSwitch */ "./src/js/themeSwitch.js");
 /* harmony import */ var _themeModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./themeModal */ "./src/js/themeModal.js");
+/* harmony import */ var _calculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculator */ "./src/js/calculator.js");
+
 
 
 var themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_0__.default();
 var themeModal = new _themeModal__WEBPACK_IMPORTED_MODULE_1__.default();
+var calculator = new _calculator__WEBPACK_IMPORTED_MODULE_2__.default();
+
+/***/ }),
+
+/***/ "./src/js/calculator.js":
+/*!******************************!*\
+  !*** ./src/js/calculator.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ calculator)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var calculator = /*#__PURE__*/function () {
+  function calculator() {
+    _classCallCheck(this, calculator);
+
+    if (!this.vars()) return;
+    this.setupEvents();
+  }
+
+  _createClass(calculator, [{
+    key: "vars",
+    value: function vars() {
+      this.selectors = {
+        previousValueElement: 'data-previous-value',
+        currentValueElement: 'data-current-value',
+        keys: 'data-keys',
+        numberKey: 'num',
+        operationKey: 'func',
+        deleteKey: 'del',
+        resetKey: 'reset',
+        equalKey: 'equals',
+        smallClass: 'small'
+      };
+      this.previousValueElement = document.querySelector("[".concat(this.selectors.previousValueElement, "]"));
+      this.currentValueElement = document.querySelector("[".concat(this.selectors.currentValueElement, "]"));
+      this.keys = document.querySelectorAll("[".concat(this.selectors.keys, "]"));
+      if (!this.previousValueElement || !this.currentValueElement || !this.keys) return false;
+      this.currentOperand;
+      this.previousOperand;
+      return true;
+    }
+  }, {
+    key: "setupEvents",
+    value: function setupEvents() {
+      var _this = this;
+
+      this.reset();
+      this.keys.forEach(function (key) {
+        var keyFunction = key.dataset.keys;
+        var keyInnerText = key.innerHTML;
+        var keyOperation = key.dataset.operation;
+        key.addEventListener('click', function () {
+          if (keyFunction == _this.selectors.numberKey) {
+            _this.appendNumber(keyInnerText);
+
+            _this.updateDisplay();
+          } else if (keyFunction == _this.selectors.operationKey) {
+            _this.selectOperation(keyOperation);
+
+            _this.updateDisplay();
+          } else if (keyFunction == _this.selectors.deleteKey) {
+            _this["delete"]();
+
+            _this.updateDisplay();
+          } else if (keyFunction == _this.selectors.resetKey) {
+            _this.reset();
+
+            _this.updateDisplay();
+          } else if (keyFunction == _this.selectors.equalKey) {
+            _this.compute();
+
+            _this.updateDisplay();
+          }
+        });
+      });
+    }
+    /* Function that restores variables to initial state */
+
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.currentOperand = '0';
+      this.previousOperand = '';
+      this.operation = undefined;
+    }
+    /* Function that extracts last character from string */
+
+  }, {
+    key: "delete",
+    value: function _delete() {
+      this.currentOperand = this.currentOperand.toString().slice(0, -1);
+    }
+    /**
+    * Function that append last clicked number from passed parameter to currentOperand variable
+    * @param    {String}  number    key inner value
+    */
+
+  }, {
+    key: "appendNumber",
+    value: function appendNumber(number) {
+      if (number === '.' && this.currentOperand.includes('.')) return;
+      if (this.currentOperand.length >= 10) return;
+      this.currentOperand = this.currentOperand.toString() + number.toString();
+    }
+    /**
+    * Function that call compute() if condition is met or 
+    * assign new values to operation, previous and currentOperand.
+    * @param    {String}  number    key inner value
+    */
+
+  }, {
+    key: "selectOperation",
+    value: function selectOperation(operation) {
+      if (this.currentOperand === '') return;
+      if (this.previousOperand != '') this.compute();
+      this.operation = operation;
+      this.previousOperand = this.currentOperand;
+      this.currentOperand = '0';
+    }
+    /**
+    * Function that calculate prev and current value using a mathematical operator 
+    * taken from operation variable.
+    */
+
+  }, {
+    key: "compute",
+    value: function compute() {
+      var result;
+      var prev = parseFloat(this.previousOperand);
+      var current = parseFloat(this.currentOperand);
+      if (isNaN(prev) || isNaN(current)) return;
+      var operations = {
+        '+': prev + current,
+        '-': prev - current,
+        '*': prev * current,
+        '/': prev / current
+      };
+      result = operations[this.operation];
+      this.currentOperand = result;
+      this.operation = undefined;
+      this.previousOperand = '';
+    }
+    /**
+    * Function that update all informations/results on user screen
+    */
+
+  }, {
+    key: "updateDisplay",
+    value: function updateDisplay() {
+      this.currentValueElement.innerHTML = this.convertNumber(this.currentOperand);
+
+      if (this.currentOperand.toString().length > 10) {
+        this.currentValueElement.classList.add("".concat(this.selectors.smallClass));
+      } else {
+        this.currentValueElement.classList.remove("".concat(this.selectors.smallClass));
+      }
+
+      if (this.operation != null) {
+        this.previousValueElement.innerHTML = "".concat(this.convertNumber(this.previousOperand), " ").concat(this.operation);
+      } else {
+        this.previousValueElement.innerHTML = '';
+      }
+    }
+    /**
+    * Function that converts a string with number to string with a 
+    * language-sensitive representation of this number.
+    * @param    {String}  number    string with number
+    */
+
+  }, {
+    key: "convertNumber",
+    value: function convertNumber(number) {
+      var stringNumber = number.toString();
+      var integerDigits = parseFloat(stringNumber.split('.')[0]);
+      var decimalDigits = stringNumber.split('.')[1];
+      var integerDisplay;
+
+      if (isNaN(integerDigits)) {
+        integerDisplay = '';
+      } else {
+        integerDisplay = integerDigits.toLocaleString('en', {
+          maximumFractionDigits: 0
+        });
+      }
+
+      if (decimalDigits != null) {
+        return "".concat(integerDisplay, ".").concat(decimalDigits);
+      } else {
+        return integerDisplay;
+      }
+    }
+  }]);
+
+  return calculator;
+}();
+
+
 
 /***/ }),
 
