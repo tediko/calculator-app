@@ -158,17 +158,24 @@ var ThemeModal = /*#__PURE__*/function () {
       if (this.created) return;
       this.created = true;
       var colorType = button.dataset.themePicker;
+      setTimeout(function () {
+        var editor = document.querySelector('.picker_editor input');
+        editor.focus();
+      }, 100);
       var pick = new vanilla_picker__WEBPACK_IMPORTED_MODULE_0__.default({
         parent: this.colorGeneratorWrapper,
         popup: false,
         onDone: function onDone(color) {
-          _this3.created = false;
+          setTimeout(function () {
+            _this3.created = false;
+          }, 100);
           button.style.backgroundColor = color.hslString;
 
           _this3.setColors(colorType, color.hslString);
 
           pick.destroy();
           pick = null;
+          button.focus();
         }
       });
     }

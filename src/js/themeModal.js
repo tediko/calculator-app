@@ -99,15 +99,23 @@ export default class ThemeModal {
         this.created = true;
         let colorType = button.dataset.themePicker;
 
+        setTimeout(() => {
+            const editor = document.querySelector('.picker_editor input');
+            editor.focus();
+        }, 100)
+
         let pick = new Picker({
             parent: this.colorGeneratorWrapper,
             popup: false,
             onDone: (color) => {
-                this.created = false;
+                setTimeout(() => {
+                    this.created = false;
+                }, 100)
                 button.style.backgroundColor = color.hslString;
                 this.setColors(colorType, color.hslString);
                 pick.destroy();
                 pick = null;
+                button.focus();
             }
         })
     }
