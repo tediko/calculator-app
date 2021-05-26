@@ -32,7 +32,7 @@ export default class ThemeSwitch {
         this.setBodyTheme();
 
         this.inputs.forEach(input => {
-            input.addEventListener('focus', () => {
+            input.addEventListener('change', () => {
                 this.toggleTheme(input);
                 this.saveThemeToLocalStorage();
             })

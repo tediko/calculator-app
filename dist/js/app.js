@@ -526,7 +526,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
       this.getUserPreferedTheme(this.isThemeSet());
       this.setBodyTheme();
       this.inputs.forEach(function (input) {
-        input.addEventListener('focus', function () {
+        input.addEventListener('change', function () {
           _this.toggleTheme(input);
 
           _this.saveThemeToLocalStorage();
