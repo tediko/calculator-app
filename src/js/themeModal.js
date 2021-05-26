@@ -37,12 +37,16 @@ export default class ThemeModal {
         this.created = false;
         this.previousTheme;
         this.currentTheme;
+        this.previousElementFocused;
 
         return true;
     }
 
     setupEvents() {
-        this.toggleButton.addEventListener('click', () => this.toggle());
+        this.toggleButton.addEventListener('click', (event) => {
+            this.toggle();
+            this.previousElementFocused = event.target;
+        });
         this.closeButton.addEventListener('click', () => this.close());
         this.saveButton.addEventListener('click', () => this.save());
         this.colorButtons.forEach(button => {
@@ -77,6 +81,7 @@ export default class ThemeModal {
         this.setBodyTheme(this.previousTheme);
         this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
         this.checkActiveInput(this.previousTheme);
+        this.previousElementFocused.focus();
     }
 
 

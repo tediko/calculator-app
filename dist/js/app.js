@@ -78,6 +78,7 @@ var ThemeModal = /*#__PURE__*/function () {
       this.created = false;
       this.previousTheme;
       this.currentTheme;
+      this.previousElementFocused;
       return true;
     }
   }, {
@@ -85,8 +86,10 @@ var ThemeModal = /*#__PURE__*/function () {
     value: function setupEvents() {
       var _this = this;
 
-      this.toggleButton.addEventListener('click', function () {
-        return _this.toggle();
+      this.toggleButton.addEventListener('click', function (event) {
+        _this.toggle();
+
+        _this.previousElementFocused = event.target;
       });
       this.closeButton.addEventListener('click', function () {
         return _this.close();
@@ -133,6 +136,7 @@ var ThemeModal = /*#__PURE__*/function () {
       this.setBodyTheme(this.previousTheme);
       this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
       this.checkActiveInput(this.previousTheme);
+      this.previousElementFocused.focus();
     } // Save modal
 
   }, {
