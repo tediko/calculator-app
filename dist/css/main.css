@@ -769,6 +769,9 @@ i {
 .calc__display-value--current {
   font-size: clamp(2rem, 7vw, 2.9375rem);
 }
+.calc__display-value--current.small {
+  font-size: clamp(1.125rem, 4.5vw, 2rem);
+}
 .calc__keypad {
   display: grid;
   grid-template-columns: repeat(4, minmax(40px, 101px));

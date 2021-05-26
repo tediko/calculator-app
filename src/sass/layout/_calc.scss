@@ -260,6 +260,10 @@
         &--current {
             @extend #{$root}__display-value;
             font-size: clamp(2rem, 7vw, 2.9375rem);
+
+            &.small {
+                font-size: clamp(1.125rem, 4.5vw, 2rem);
+            }
         }
     }
     
