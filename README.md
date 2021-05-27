@@ -16,7 +16,7 @@
 ## Overview
 
 ### Intro
-Hello! This is my solution to [Calculator app - Frontend Mentor](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN). It was one of the most enjoyable challenges I have done so far. When I saw that challenge requires a change theme I decided to add another functionality which is extra "*custom*" theme where the user can edit freely colors in theme modal. Many times, when I finished a certain function, I had an idea with another one, and I had a lot of fun doing it. Honestly, It took me more time to made this custom modal than the calculator itself - which itself was a good javascript challenge as well. You can use both the keyboard and the mouse to enter data into the calculator.
+Hello! This is my solution to [Calculator app - Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). It was one of the most enjoyable challenges I have done so far. When I saw that challenge requires a change theme I decided to add another functionality which is extra "*custom*" theme where the user can edit freely colors in theme modal. Many times, when I finished a certain function, I had an idea with another one, and I had a lot of fun doing it. Honestly, It took me more time to made this custom modal than the calculator itself - which itself was a good javascript challenge as well. You can use both the keyboard and the mouse to enter data into the calculator.
 
 ### The challenge
 
