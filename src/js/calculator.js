@@ -183,6 +183,7 @@ export default class calculator {
     checkForErrors(currentValue, previousValue, operations) {
         let result;
 
+        // Checks if our operation is dividing by zero. 
         if ((previousValue === 0 || currentValue === 0) && this.operation === '/') {
             this.isDivisionByZero = true;
             result = '';

@@ -240,7 +240,7 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "checkForErrors",
     value: function checkForErrors(currentValue, previousValue, operations) {
-      var result;
+      var result; // Checks if our operation is dividing by zero. 
 
       if ((previousValue === 0 || currentValue === 0) && this.operation === '/') {
         this.isDivisionByZero = true;
