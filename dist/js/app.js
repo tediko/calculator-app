@@ -77,7 +77,8 @@ var calculator = /*#__PURE__*/function () {
     value: function setupEvents() {
       var _this = this;
 
-      this.reset();
+      this.reset(); // Add event listener to keys.
+
       this.keys.forEach(function (key) {
         var keyFunction = key.dataset.keys;
         var keyInnerText = key.innerHTML;
@@ -85,7 +86,8 @@ var calculator = /*#__PURE__*/function () {
         key.addEventListener('click', function () {
           _this.whichCalculatorFuncToCall(keyFunction, keyInnerText, keyOperation);
         });
-      });
+      }); // Add listener to document for keyboard input
+
       document.addEventListener('keydown', function (event) {
         var keys = {
           '0': 'num',
@@ -114,7 +116,9 @@ var calculator = /*#__PURE__*/function () {
         _this.whichCalculatorFuncToCall(pressedFunction, pressedKey, pressedKey);
       });
     }
-    /* Function that restores variables to initial state */
+    /**
+    * Function that restores variables to initial state
+    */
 
   }, {
     key: "reset",
@@ -123,7 +127,9 @@ var calculator = /*#__PURE__*/function () {
       this.previousOperand = '';
       this.operation = undefined;
     }
-    /* Function that extracts last character from string */
+    /**
+    * Function that extracts last character from string 
+    */
 
   }, {
     key: "delete",

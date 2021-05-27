@@ -37,6 +37,7 @@ export default class calculator {
     setupEvents() {
         this.reset();
 
+        // Add event listener to keys.
         this.keys.forEach(key => {
             let keyFunction = key.dataset.keys;
             let keyInnerText = key.innerHTML;
@@ -46,7 +47,7 @@ export default class calculator {
                 this.whichCalculatorFuncToCall(keyFunction, keyInnerText, keyOperation);
             })
         })
-
+        // Add listener to document for keyboard input
         document.addEventListener('keydown', (event) => {
             const keys = {
                 '0': 'num',
@@ -77,14 +78,18 @@ export default class calculator {
         })
     }
 
-    /* Function that restores variables to initial state */
+    /**
+    * Function that restores variables to initial state
+    */
     reset() {
         this.currentOperand = '0';
         this.previousOperand = '';
         this.operation = undefined;
     }
 
-    /* Function that extracts last character from string */
+    /**
+    * Function that extracts last character from string 
+    */
     delete() {
         if (this.currentOperand === 0) {
             return;
