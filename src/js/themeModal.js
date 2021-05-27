@@ -60,7 +60,9 @@ export default class ThemeModal {
         })
     }
 
-    // Display modal
+    /**
+    * Function that displays modal
+    */
     toggle() {
         this.modal.classList.add(`${this.selectors.activeClass}`);
         this.overlayWrapper.classList.add(`${this.selectors.activeClass}`);
@@ -74,7 +76,9 @@ export default class ThemeModal {
         }, 50);
     }
     
-    // Hide modal
+    /**
+    * Function that hide/close modal
+    */
     close() {
         this.modal.classList.remove(`${this.selectors.activeClass}`);
         this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
@@ -89,8 +93,9 @@ export default class ThemeModal {
         }
     }
 
-
-    // Save modal
+    /**
+    * Function that save modal
+    */
     save() {
         this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
         this.saveToLocalStorage();
@@ -141,7 +146,9 @@ export default class ThemeModal {
         this.colors[colorType] = color;
     }
 
-    // Save colors to localStorage
+    /**
+    * Function that save colors to localStorage
+    */
     saveToLocalStorage() {
         localStorage.setItem('colors', JSON.stringify(this.colors));
     }
@@ -164,13 +171,14 @@ export default class ThemeModal {
         this.currentInput.checked = true;
     }
 
-    // Function to keep focus inside modal when pressing tab
+    /**
+    * Function to keep focus inside modal when pressing tab
+    */
     focusTrap() {
         const focusableElements = 'button';
         this.firstFocusableElement = this.modal.querySelectorAll(focusableElements)[0];
         const focusableContent = this.modal.querySelectorAll(focusableElements);
         const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
 
         document.addEventListener('keydown', (event) => {
             let isTabPressed = event.key === 'Tab' || event.keyCode === 9;

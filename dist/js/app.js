@@ -428,7 +428,10 @@ var ThemeModal = /*#__PURE__*/function () {
           _this.close();
         }
       });
-    } // Display modal
+    }
+    /**
+    * Function that displays modal
+    */
 
   }, {
     key: "toggle",
@@ -445,7 +448,10 @@ var ThemeModal = /*#__PURE__*/function () {
       window.setTimeout(function () {
         _this2.firstFocusableElement.focus();
       }, 50);
-    } // Hide modal
+    }
+    /**
+    * Function that hide/close modal
+    */
 
   }, {
     key: "close",
@@ -462,7 +468,10 @@ var ThemeModal = /*#__PURE__*/function () {
         this.pick.destroy();
         this.pick = null;
       }
-    } // Save modal
+    }
+    /**
+    * Function that save modal
+    */
 
   }, {
     key: "save",
@@ -521,7 +530,10 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "setColors",
     value: function setColors(colorType, color) {
       this.colors[colorType] = color;
-    } // Save colors to localStorage
+    }
+    /**
+    * Function that save colors to localStorage
+    */
 
   }, {
     key: "saveToLocalStorage",
@@ -549,7 +561,10 @@ var ThemeModal = /*#__PURE__*/function () {
     value: function checkActiveInput(inputDataset) {
       this.currentInput = document.querySelector("[".concat(this.selectors.inputDataset, "=\"").concat(inputDataset, "\"]"));
       this.currentInput.checked = true;
-    } // Function to keep focus inside modal when pressing tab
+    }
+    /**
+    * Function to keep focus inside modal when pressing tab
+    */
 
   }, {
     key: "focusTrap",
