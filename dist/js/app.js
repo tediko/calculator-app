@@ -448,6 +448,7 @@ var ThemeModal = /*#__PURE__*/function () {
       window.setTimeout(function () {
         _this2.firstFocusableElement.focus();
       }, 50);
+      this.assignColorsToButtonsDataAttribute();
     }
     /**
     * Function that hide/close modal
@@ -468,6 +469,8 @@ var ThemeModal = /*#__PURE__*/function () {
         this.pick.destroy();
         this.pick = null;
       }
+
+      this.setButtonColorsFromDataAttribute();
     }
     /**
     * Function that save modal
@@ -591,6 +594,28 @@ var ThemeModal = /*#__PURE__*/function () {
             event.preventDefault();
           }
         }
+      });
+    }
+    /**
+    * Function that save current background-colors from buttons to data-attribute
+    */
+
+  }, {
+    key: "assignColorsToButtonsDataAttribute",
+    value: function assignColorsToButtonsDataAttribute() {
+      this.colorButtons.forEach(function (button) {
+        button.dataset.color = window.getComputedStyle(button).backgroundColor;
+      });
+    }
+    /**
+    * Function that set background-colors on buttons from data-attribute
+    */
+
+  }, {
+    key: "setButtonColorsFromDataAttribute",
+    value: function setButtonColorsFromDataAttribute() {
+      this.colorButtons.forEach(function (button) {
+        button.style.backgroundColor = "".concat(button.dataset.color);
       });
     }
   }]);

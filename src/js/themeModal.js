@@ -74,6 +74,7 @@ export default class ThemeModal {
         window.setTimeout(() => {
             this.firstFocusableElement.focus();
         }, 50);
+        this.assignColorsToButtonsDataAttribute();
     }
     
     /**
@@ -91,6 +92,7 @@ export default class ThemeModal {
             this.pick.destroy();
             this.pick = null;
         }
+        this.setButtonColorsFromDataAttribute();
     }
 
     /**
@@ -196,5 +198,23 @@ export default class ThemeModal {
                 }
             }
         });
+    }
+
+    /**
+    * Function that save current background-colors from buttons to data-attribute
+    */
+    assignColorsToButtonsDataAttribute() {
+        this.colorButtons.forEach(button => {
+            button.dataset.color = window.getComputedStyle(button).backgroundColor;
+        })
+    }
+
+    /**
+    * Function that set background-colors on buttons from data-attribute
+    */
+    setButtonColorsFromDataAttribute() {
+        this.colorButtons.forEach(button => {
+            button.style.backgroundColor = `${button.dataset.color}`;
+        })
     }
 }
