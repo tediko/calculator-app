@@ -71,7 +71,7 @@ export default class ThemeModal {
         this.focusTrap();
         window.setTimeout(() => {
             this.firstFocusableElement.focus();
-        }, 50)
+        }, 50);
     }
     
     // Hide modal
@@ -82,6 +82,11 @@ export default class ThemeModal {
         this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
         this.checkActiveInput(this.previousTheme);
         this.previousElementFocused.focus();
+        if (this.pick) {
+            this.created = false;
+            this.pick.destroy();
+            this.pick = null;
+        }
     }
 
 
@@ -110,7 +115,7 @@ export default class ThemeModal {
             editor.focus();
         }, 100)
 
-        let pick = new Picker({
+        this.pick = new Picker({
             parent: this.colorGeneratorWrapper,
             popup: false,
             color: buttonCurrentColor,
@@ -119,9 +124,9 @@ export default class ThemeModal {
                     this.created = false;
                 }, 100)
                 button.style.backgroundColor = color.hslString;
-                pick.destroy();
+                this.pick.destroy();
                 this.setColors(colorType, color.hslString);
-                pick = null;
+                this.pick = null;
                 button.focus();
             }
         })
