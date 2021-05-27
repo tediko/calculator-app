@@ -134,7 +134,7 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "appendNumber",
     value: function appendNumber(number) {
-      if (number === '.' && this.currentOperand.includes('.')) return;
+      if (number === '.' && this.currentOperand.toString().includes('.')) return;
       if (this.currentOperand.length >= 10) return;
       this.currentOperand = this.currentOperand.toString() + number.toString();
     }
