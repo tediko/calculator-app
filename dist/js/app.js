@@ -165,6 +165,7 @@ var calculator = /*#__PURE__*/function () {
       if (this.currentOperand === '') return;
       if (this.previousOperand != '') this.compute();
       this.operation = operation;
+      this.previousOperation = operation;
       this.previousOperand = this.currentOperand;
       this.currentOperand = '0';
     }
@@ -284,10 +285,10 @@ var calculator = /*#__PURE__*/function () {
     value: function performSameCalculation() {
       var factor = parseFloat(this.previousOperandValue);
       var operations = {
-        '+': this.previousResult + factor,
-        '-': this.previousResult - factor,
-        '*': this.previousResult * factor,
-        '/': this.previousResult / factor
+        '+': parseFloat(this.previousResult) + factor,
+        '-': parseFloat(this.previousResult) - factor,
+        '*': parseFloat(this.previousResult) * factor,
+        '/': parseFloat(this.previousResult) / factor
       };
       return operations[this.previousOperation];
     }

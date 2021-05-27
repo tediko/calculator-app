@@ -106,6 +106,7 @@ export default class calculator {
         if (this.currentOperand === '') return;
         if (this.previousOperand != '') this.compute();
         this.operation = operation;
+        this.previousOperation = operation;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '0';
     }
@@ -217,10 +218,10 @@ export default class calculator {
     performSameCalculation() {
         let factor = parseFloat(this.previousOperandValue);
         const operations = {
-            '+': this.previousResult + factor,
-            '-': this.previousResult - factor,
-            '*': this.previousResult * factor,
-            '/': this.previousResult / factor
+            '+': parseFloat(this.previousResult) + factor,
+            '-': parseFloat(this.previousResult) - factor,
+            '*': parseFloat(this.previousResult) * factor,
+            '/': parseFloat(this.previousResult) / factor
         }
         return operations[this.previousOperation];
     }
