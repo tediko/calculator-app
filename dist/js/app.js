@@ -57,12 +57,14 @@ var calculator = /*#__PURE__*/function () {
         deleteKey: 'del',
         resetKey: 'reset',
         equalKey: 'equals',
-        smallClass: 'small'
+        smallClass: 'small',
+        divisionError: 'division by zero'
       };
       this.previousValueElement = document.querySelector("[".concat(this.selectors.previousValueElement, "]"));
       this.currentValueElement = document.querySelector("[".concat(this.selectors.currentValueElement, "]"));
       this.keys = document.querySelectorAll("[".concat(this.selectors.keys, "]"));
       if (!this.previousValueElement || !this.currentValueElement || !this.keys) return false;
+      this.isDivisionByZero = false;
       this.currentOperand;
       this.previousOperand;
       return true;
@@ -159,18 +161,16 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "compute",
     value: function compute() {
-      var result;
       var prev = parseFloat(this.previousOperand);
       var current = parseFloat(this.currentOperand);
-      if (isNaN(prev) || isNaN(current)) return;
       var operations = {
         '+': prev + current,
         '-': prev - current,
         '*': prev * current,
         '/': prev / current
       };
-      result = operations[this.operation];
-      this.currentOperand = result;
+      if (isNaN(prev) || isNaN(current)) return;
+      this.currentOperand = this.checkForErrors(current, prev, operations);
       this.operation = undefined;
       this.previousOperand = '';
     }
@@ -204,6 +204,12 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "convertNumber",
     value: function convertNumber(number) {
+      if (this.isDivisionByZero) {
+        this.isDivisionByZero = false;
+        this.reset();
+        return "".concat(this.selectors.divisionError);
+      }
+
       var stringNumber = number.toString();
       var integerDigits = parseFloat(stringNumber.split('.')[0]);
       var decimalDigits = stringNumber.split('.')[1];
@@ -222,6 +228,28 @@ var calculator = /*#__PURE__*/function () {
       } else {
         return integerDisplay;
       }
+    }
+    /**
+    * Function that check for any error based on two values - currentValue and previousValue
+    * @param    {Number} currentValue    Value of current user typed value
+    * @param    {Number} previousValue    Value of previous user typed value
+    * @param    {Object} operations    Object with mathematical operations
+    * @return   {String}           Returns either empty string or result of math operation
+    */
+
+  }, {
+    key: "checkForErrors",
+    value: function checkForErrors(currentValue, previousValue, operations) {
+      var result;
+
+      if ((previousValue === 0 || currentValue === 0) && this.operation === '/') {
+        this.isDivisionByZero = true;
+        result = '';
+      } else {
+        result = operations[this.operation];
+      }
+
+      return result;
     }
   }]);
 

@@ -14,7 +14,8 @@ export default class calculator {
             deleteKey: 'del',
             resetKey: 'reset',
             equalKey: 'equals',
-            smallClass: 'small'
+            smallClass: 'small',
+            divisionError: 'division by zero'
         }
 
         this.previousValueElement = document.querySelector(`[${this.selectors.previousValueElement}]`);
@@ -23,6 +24,7 @@ export default class calculator {
 
         if (!this.previousValueElement || !this.currentValueElement || !this.keys) return false;
 
+        this.isDivisionByZero = false;
         this.currentOperand;
         this.previousOperand;
         return true;
@@ -103,11 +105,8 @@ export default class calculator {
     * taken from operation variable.
     */
     compute() {
-        let result;
         const prev = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
-        if (isNaN(prev) || isNaN(current)) return;
-
         const operations = {
             '+': prev + current,
             '-': prev - current,
@@ -115,8 +114,9 @@ export default class calculator {
             '/': prev / current
         }
 
-        result = operations[this.operation];
-        this.currentOperand = result;
+        if (isNaN(prev) || isNaN(current)) return;
+
+        this.currentOperand = this.checkForErrors(current, prev, operations);
         this.operation = undefined;
         this.previousOperand = '';
     }
@@ -147,6 +147,12 @@ export default class calculator {
     * @param    {String}  number    string with number
     */
     convertNumber(number) {
+        if (this.isDivisionByZero) {
+            this.isDivisionByZero = false;
+            this.reset();
+            return `${this.selectors.divisionError}`;
+        }
+
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
         const decimalDigits = stringNumber.split('.')[1];
@@ -165,5 +171,25 @@ export default class calculator {
         } else {
             return integerDisplay;
         }
+    }
+
+    /**
+    * Function that check for any error based on two values - currentValue and previousValue
+    * @param    {Number} currentValue    Value of current user typed value
+    * @param    {Number} previousValue    Value of previous user typed value
+    * @param    {Object} operations    Object with mathematical operations
+    * @return   {String}           Returns either empty string or result of math operation
+    */
+    checkForErrors(currentValue, previousValue, operations) {
+        let result;
+
+        if ((previousValue === 0 || currentValue === 0) && this.operation === '/') {
+            this.isDivisionByZero = true;
+            result = '';
+        } else {
+            result = operations[this.operation];
+        }
+
+        return result;
     }
  }
