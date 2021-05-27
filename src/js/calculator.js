@@ -67,6 +67,56 @@ export default class calculator {
                 }
             })
         })
+
+        document.addEventListener('keydown', (event) => {
+            const keys = {
+                '0': 'num',
+                '1': 'num',
+                '2': 'num',
+                '3': 'num',
+                '4': 'num',
+                '5': 'num',
+                '6': 'num',
+                '7': 'num',
+                '8': 'num',
+                '9': 'num',
+                '.': 'num',
+                '+': 'func',
+                '-': 'func',
+                '*': 'func',
+                '/': 'func',
+                'Delete': 'reset',
+                'Backspace': 'del',
+                '=': 'equals',
+                'Enter': 'equals'
+            }
+            
+            let pressedKey = event.key;
+            let pressedFunction = keys[pressedKey];
+
+            if (pressedFunction == this.selectors.numberKey) {
+                this.isEqualPressedAgain = false;
+                this.appendNumber(pressedKey);
+                this.updateDisplay();
+                this.previousOperandValue = this.currentOperand;
+            } else if (pressedFunction == this.selectors.operationKey) {
+                this.isEqualPressedAgain = false;
+                this.selectOperation(pressedKey);
+                this.updateDisplay();
+            } else if (pressedFunction == this.selectors.deleteKey) {
+                this.isEqualPressedAgain = false;
+                this.delete();
+                this.updateDisplay();
+            } else if (pressedFunction == this.selectors.resetKey) {
+                this.isEqualPressedAgain = false;
+                this.reset();
+                this.updateDisplay();
+            } else if (pressedFunction == this.selectors.equalKey) {
+                this.compute();
+                this.updateDisplay();
+                this.isEqualPressedAgain = true;
+            }
+        })
     }
 
     /* Function that restores variables to initial state */

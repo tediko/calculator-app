@@ -118,6 +118,65 @@ var calculator = /*#__PURE__*/function () {
           }
         });
       });
+      document.addEventListener('keydown', function (event) {
+        var keys = {
+          '0': 'num',
+          '1': 'num',
+          '2': 'num',
+          '3': 'num',
+          '4': 'num',
+          '5': 'num',
+          '6': 'num',
+          '7': 'num',
+          '8': 'num',
+          '9': 'num',
+          '.': 'num',
+          '+': 'func',
+          '-': 'func',
+          '*': 'func',
+          '/': 'func',
+          'Delete': 'reset',
+          'Backspace': 'del',
+          '=': 'equals',
+          'Enter': 'equals'
+        };
+        var pressedKey = event.key;
+        var pressedFunction = keys[pressedKey];
+
+        if (pressedFunction == _this.selectors.numberKey) {
+          _this.isEqualPressedAgain = false;
+
+          _this.appendNumber(pressedKey);
+
+          _this.updateDisplay();
+
+          _this.previousOperandValue = _this.currentOperand;
+        } else if (pressedFunction == _this.selectors.operationKey) {
+          _this.isEqualPressedAgain = false;
+
+          _this.selectOperation(pressedKey);
+
+          _this.updateDisplay();
+        } else if (pressedFunction == _this.selectors.deleteKey) {
+          _this.isEqualPressedAgain = false;
+
+          _this["delete"]();
+
+          _this.updateDisplay();
+        } else if (pressedFunction == _this.selectors.resetKey) {
+          _this.isEqualPressedAgain = false;
+
+          _this.reset();
+
+          _this.updateDisplay();
+        } else if (pressedFunction == _this.selectors.equalKey) {
+          _this.compute();
+
+          _this.updateDisplay();
+
+          _this.isEqualPressedAgain = true;
+        }
+      });
     }
     /* Function that restores variables to initial state */
 
@@ -421,6 +480,12 @@ var ThemeModal = /*#__PURE__*/function () {
       this.previousTheme == this.selectors.customTheme ? null : this.themeSwitch.removeCustomTheme();
       this.checkActiveInput(this.previousTheme);
       this.previousElementFocused.focus();
+
+      if (this.pick) {
+        this.created = false;
+        this.pick.destroy();
+        this.pick = null;
+      }
     } // Save modal
 
   }, {
@@ -451,7 +516,7 @@ var ThemeModal = /*#__PURE__*/function () {
         var editor = document.querySelector('.picker_editor input');
         editor.focus();
       }, 100);
-      var pick = new vanilla_picker__WEBPACK_IMPORTED_MODULE_0__.default({
+      this.pick = new vanilla_picker__WEBPACK_IMPORTED_MODULE_0__.default({
         parent: this.colorGeneratorWrapper,
         popup: false,
         color: buttonCurrentColor,
@@ -460,11 +525,12 @@ var ThemeModal = /*#__PURE__*/function () {
             _this3.created = false;
           }, 100);
           button.style.backgroundColor = color.hslString;
-          pick.destroy();
+
+          _this3.pick.destroy();
 
           _this3.setColors(colorType, color.hslString);
 
-          pick = null;
+          _this3.pick = null;
           button.focus();
         }
       });
