@@ -90,7 +90,7 @@ var calculator = /*#__PURE__*/function () {
 
             _this.updateDisplay();
 
-            _this.previousOperandValue = _this.currentOperand;
+            _this.latestInputValue = _this.currentOperand;
           } else if (keyFunction == _this.selectors.operationKey) {
             _this.isEqualPressedAgain = false;
 
@@ -150,7 +150,7 @@ var calculator = /*#__PURE__*/function () {
 
           _this.updateDisplay();
 
-          _this.previousOperandValue = _this.currentOperand;
+          _this.latestInputValue = _this.currentOperand;
         } else if (pressedFunction == _this.selectors.operationKey) {
           _this.isEqualPressedAgain = false;
 
@@ -334,7 +334,7 @@ var calculator = /*#__PURE__*/function () {
       return result;
     }
     /** 
-    * Function that calculates value of previous result and incredient/factor.
+    * Function that calculates value of previous result and latestInput.
     * It is used when equal button is pressed again.  
     * @return   {Number}      Returns result of calculation.
     */
@@ -342,13 +342,13 @@ var calculator = /*#__PURE__*/function () {
   }, {
     key: "performSameCalculation",
     value: function performSameCalculation() {
-      var factor = parseFloat(this.previousOperandValue);
+      var latestInput = parseFloat(this.latestInputValue);
       var prevResult = parseFloat(this.previousResult);
       var operations = {
-        '+': prevResult + factor,
-        '-': prevResult - factor,
-        '*': prevResult * factor,
-        '/': prevResult / factor
+        '+': prevResult + latestInput,
+        '-': prevResult - latestInput,
+        '*': prevResult * latestInput,
+        '/': prevResult / latestInput
       };
       return operations[this.previousOperation];
     }

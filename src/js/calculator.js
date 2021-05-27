@@ -47,7 +47,7 @@ export default class calculator {
                     this.isEqualPressedAgain = false;
                     this.appendNumber(keyInnerText);
                     this.updateDisplay();
-                    this.previousOperandValue = this.currentOperand;
+                    this.latestInputValue = this.currentOperand;
                 } else if (keyFunction == this.selectors.operationKey) {
                     this.isEqualPressedAgain = false;
                     this.selectOperation(keyOperation);
@@ -98,7 +98,7 @@ export default class calculator {
                 this.isEqualPressedAgain = false;
                 this.appendNumber(pressedKey);
                 this.updateDisplay();
-                this.previousOperandValue = this.currentOperand;
+                this.latestInputValue = this.currentOperand;
             } else if (pressedFunction == this.selectors.operationKey) {
                 this.isEqualPressedAgain = false;
                 this.selectOperation(pressedKey);
@@ -261,18 +261,18 @@ export default class calculator {
     }
 
     /** 
-    * Function that calculates value of previous result and incredient/factor.
+    * Function that calculates value of previous result and latestInput.
     * It is used when equal button is pressed again.  
     * @return   {Number}      Returns result of calculation.
     */
     performSameCalculation() {
-        let factor = parseFloat(this.previousOperandValue);
+        let latestInput = parseFloat(this.latestInputValue);
         let prevResult = parseFloat(this.previousResult);
         const operations = {
-            '+': prevResult + factor,
-            '-': prevResult - factor,
-            '*': prevResult * factor,
-            '/': prevResult / factor
+            '+': prevResult + latestInput,
+            '-': prevResult - latestInput,
+            '*': prevResult * latestInput,
+            '/': prevResult / latestInput
         }
         return operations[this.previousOperation];
     }
