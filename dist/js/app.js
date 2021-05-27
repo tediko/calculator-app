@@ -284,11 +284,12 @@ var calculator = /*#__PURE__*/function () {
     key: "performSameCalculation",
     value: function performSameCalculation() {
       var factor = parseFloat(this.previousOperandValue);
+      var prevResult = parseFloat(this.previousResult);
       var operations = {
-        '+': parseFloat(this.previousResult) + factor,
-        '-': parseFloat(this.previousResult) - factor,
-        '*': parseFloat(this.previousResult) * factor,
-        '/': parseFloat(this.previousResult) / factor
+        '+': prevResult + factor,
+        '-': prevResult - factor,
+        '*': prevResult * factor,
+        '/': prevResult / factor
       };
       return operations[this.previousOperation];
     }

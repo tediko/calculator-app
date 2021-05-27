@@ -217,11 +217,12 @@ export default class calculator {
     */
     performSameCalculation() {
         let factor = parseFloat(this.previousOperandValue);
+        let prevResult = parseFloat(this.previousResult);
         const operations = {
-            '+': parseFloat(this.previousResult) + factor,
-            '-': parseFloat(this.previousResult) - factor,
-            '*': parseFloat(this.previousResult) * factor,
-            '/': parseFloat(this.previousResult) / factor
+            '+': prevResult + factor,
+            '-': prevResult - factor,
+            '*': prevResult * factor,
+            '/': prevResult / factor
         }
         return operations[this.previousOperation];
     }
