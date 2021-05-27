@@ -83,39 +83,7 @@ var calculator = /*#__PURE__*/function () {
         var keyInnerText = key.innerHTML;
         var keyOperation = key.dataset.operation;
         key.addEventListener('click', function () {
-          if (keyFunction == _this.selectors.numberKey) {
-            _this.isEqualPressedAgain = false;
-
-            _this.appendNumber(keyInnerText);
-
-            _this.updateDisplay();
-
-            _this.latestInputValue = _this.currentOperand;
-          } else if (keyFunction == _this.selectors.operationKey) {
-            _this.isEqualPressedAgain = false;
-
-            _this.selectOperation(keyOperation);
-
-            _this.updateDisplay();
-          } else if (keyFunction == _this.selectors.deleteKey) {
-            _this.isEqualPressedAgain = false;
-
-            _this["delete"]();
-
-            _this.updateDisplay();
-          } else if (keyFunction == _this.selectors.resetKey) {
-            _this.isEqualPressedAgain = false;
-
-            _this.reset();
-
-            _this.updateDisplay();
-          } else if (keyFunction == _this.selectors.equalKey) {
-            _this.compute();
-
-            _this.updateDisplay();
-
-            _this.isEqualPressedAgain = true;
-          }
+          _this.whichCalculatorFuncToCall(keyFunction, keyInnerText, keyOperation);
         });
       });
       document.addEventListener('keydown', function (event) {
@@ -143,39 +111,7 @@ var calculator = /*#__PURE__*/function () {
         var pressedKey = event.key;
         var pressedFunction = keys[pressedKey];
 
-        if (pressedFunction == _this.selectors.numberKey) {
-          _this.isEqualPressedAgain = false;
-
-          _this.appendNumber(pressedKey);
-
-          _this.updateDisplay();
-
-          _this.latestInputValue = _this.currentOperand;
-        } else if (pressedFunction == _this.selectors.operationKey) {
-          _this.isEqualPressedAgain = false;
-
-          _this.selectOperation(pressedKey);
-
-          _this.updateDisplay();
-        } else if (pressedFunction == _this.selectors.deleteKey) {
-          _this.isEqualPressedAgain = false;
-
-          _this["delete"]();
-
-          _this.updateDisplay();
-        } else if (pressedFunction == _this.selectors.resetKey) {
-          _this.isEqualPressedAgain = false;
-
-          _this.reset();
-
-          _this.updateDisplay();
-        } else if (pressedFunction == _this.selectors.equalKey) {
-          _this.compute();
-
-          _this.updateDisplay();
-
-          _this.isEqualPressedAgain = true;
-        }
+        _this.whichCalculatorFuncToCall(pressedFunction, pressedKey, pressedKey);
       });
     }
     /* Function that restores variables to initial state */
@@ -351,6 +287,40 @@ var calculator = /*#__PURE__*/function () {
         '/': prevResult / latestInput
       };
       return operations[this.previousOperation];
+    }
+    /**
+    * Function that checks which calculator-function user input and based on that call
+    * suitable functions, assign variables. 
+    * @param    {String} func    Name of calculator-function that user select/input
+    * @param    {String} inputValue    Name of pressed/inputed key
+    * @param    {String} operationValue    Name of pressed/inputed operation
+    */
+
+  }, {
+    key: "whichCalculatorFuncToCall",
+    value: function whichCalculatorFuncToCall(func, inputValue, operationValue) {
+      if (func == this.selectors.numberKey) {
+        this.isEqualPressedAgain = false;
+        this.appendNumber(inputValue);
+        this.updateDisplay();
+        this.latestInputValue = this.currentOperand;
+      } else if (func == this.selectors.operationKey) {
+        this.isEqualPressedAgain = false;
+        this.selectOperation(operationValue);
+        this.updateDisplay();
+      } else if (func == this.selectors.deleteKey) {
+        this.isEqualPressedAgain = false;
+        this["delete"]();
+        this.updateDisplay();
+      } else if (func == this.selectors.resetKey) {
+        this.isEqualPressedAgain = false;
+        this.reset();
+        this.updateDisplay();
+      } else if (func == this.selectors.equalKey) {
+        this.compute();
+        this.updateDisplay();
+        this.isEqualPressedAgain = true;
+      }
     }
   }]);
 

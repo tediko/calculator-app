@@ -43,28 +43,7 @@ export default class calculator {
             let keyOperation = key.dataset.operation;
 
             key.addEventListener('click', () => {
-                if (keyFunction == this.selectors.numberKey) {
-                    this.isEqualPressedAgain = false;
-                    this.appendNumber(keyInnerText);
-                    this.updateDisplay();
-                    this.latestInputValue = this.currentOperand;
-                } else if (keyFunction == this.selectors.operationKey) {
-                    this.isEqualPressedAgain = false;
-                    this.selectOperation(keyOperation);
-                    this.updateDisplay();
-                } else if (keyFunction == this.selectors.deleteKey) {
-                    this.isEqualPressedAgain = false;
-                    this.delete();
-                    this.updateDisplay();
-                } else if (keyFunction == this.selectors.resetKey) {
-                    this.isEqualPressedAgain = false;
-                    this.reset();
-                    this.updateDisplay();
-                } else if (keyFunction == this.selectors.equalKey) {
-                    this.compute();
-                    this.updateDisplay();
-                    this.isEqualPressedAgain = true;
-                }
+                this.whichCalculatorFuncToCall(keyFunction, keyInnerText, keyOperation);
             })
         })
 
@@ -94,28 +73,7 @@ export default class calculator {
             let pressedKey = event.key;
             let pressedFunction = keys[pressedKey];
 
-            if (pressedFunction == this.selectors.numberKey) {
-                this.isEqualPressedAgain = false;
-                this.appendNumber(pressedKey);
-                this.updateDisplay();
-                this.latestInputValue = this.currentOperand;
-            } else if (pressedFunction == this.selectors.operationKey) {
-                this.isEqualPressedAgain = false;
-                this.selectOperation(pressedKey);
-                this.updateDisplay();
-            } else if (pressedFunction == this.selectors.deleteKey) {
-                this.isEqualPressedAgain = false;
-                this.delete();
-                this.updateDisplay();
-            } else if (pressedFunction == this.selectors.resetKey) {
-                this.isEqualPressedAgain = false;
-                this.reset();
-                this.updateDisplay();
-            } else if (pressedFunction == this.selectors.equalKey) {
-                this.compute();
-                this.updateDisplay();
-                this.isEqualPressedAgain = true;
-            }
+            this.whichCalculatorFuncToCall(pressedFunction, pressedKey, pressedKey)
         })
     }
 
@@ -275,5 +233,37 @@ export default class calculator {
             '/': prevResult / latestInput
         }
         return operations[this.previousOperation];
+    }
+
+    /**
+    * Function that checks which calculator-function user input and based on that call
+    * suitable functions, assign variables. 
+    * @param    {String} func    Name of calculator-function that user select/input
+    * @param    {String} inputValue    Name of pressed/inputed key
+    * @param    {String} operationValue    Name of pressed/inputed operation
+    */
+    whichCalculatorFuncToCall(func, inputValue, operationValue) {
+        if (func == this.selectors.numberKey) {
+            this.isEqualPressedAgain = false;
+            this.appendNumber(inputValue);
+            this.updateDisplay();
+            this.latestInputValue = this.currentOperand;
+        } else if (func == this.selectors.operationKey) {
+            this.isEqualPressedAgain = false;
+            this.selectOperation(operationValue);
+            this.updateDisplay();
+        } else if (func == this.selectors.deleteKey) {
+            this.isEqualPressedAgain = false;
+            this.delete();
+            this.updateDisplay();
+        } else if (func == this.selectors.resetKey) {
+            this.isEqualPressedAgain = false;
+            this.reset();
+            this.updateDisplay();
+        } else if (func == this.selectors.equalKey) {
+            this.compute();
+            this.updateDisplay();
+            this.isEqualPressedAgain = true;
+        }
     }
  }
