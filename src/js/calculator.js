@@ -27,6 +27,10 @@ export default class calculator {
         this.isDivisionByZero = false;
         this.currentOperand;
         this.previousOperand;
+        this.isEqualPressedAgain = false;
+        this.previousResult;
+        this.previousOperation;
+
         return true;
     }
 
@@ -40,20 +44,26 @@ export default class calculator {
 
             key.addEventListener('click', () => {
                 if (keyFunction == this.selectors.numberKey) {
+                    this.isEqualPressedAgain = false;
                     this.appendNumber(keyInnerText);
                     this.updateDisplay();
+                    this.previousOperandValue = this.currentOperand;
                 } else if (keyFunction == this.selectors.operationKey) {
+                    this.isEqualPressedAgain = false;
                     this.selectOperation(keyOperation);
                     this.updateDisplay();
                 } else if (keyFunction == this.selectors.deleteKey) {
+                    this.isEqualPressedAgain = false;
                     this.delete();
                     this.updateDisplay();
                 } else if (keyFunction == this.selectors.resetKey) {
+                    this.isEqualPressedAgain = false;
                     this.reset();
                     this.updateDisplay();
                 } else if (keyFunction == this.selectors.equalKey) {
                     this.compute();
                     this.updateDisplay();
+                    this.isEqualPressedAgain = true;
                 }
             })
         })
@@ -113,10 +123,15 @@ export default class calculator {
             '*': prev * current,
             '/': prev / current
         }
+        
+        if (this.isEqualPressedAgain) {
+            this.previousResult = this.currentOperand;
+            this.currentOperand = this.performSameCalculation();
+        }
 
         if (isNaN(prev) || isNaN(current)) return;
-
         this.currentOperand = this.checkForErrors(current, prev, operations);
+        this.previousOperation = this.operation;
         this.operation = undefined;
         this.previousOperand = '';
     }
@@ -192,5 +207,21 @@ export default class calculator {
         }
 
         return result;
+    }
+
+    /** 
+    * Function that calculates value of previous result and incredient/factor.
+    * It is used when equal button is pressed again.  
+    * @return   {Number}      Returns result of calculation.
+    */
+    performSameCalculation() {
+        let factor = parseFloat(this.previousOperandValue);
+        const operations = {
+            '+': this.previousResult + factor,
+            '-': this.previousResult - factor,
+            '*': this.previousResult * factor,
+            '/': this.previousResult / factor
+        }
+        return operations[this.previousOperation];
     }
  }

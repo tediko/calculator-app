@@ -67,6 +67,9 @@ var calculator = /*#__PURE__*/function () {
       this.isDivisionByZero = false;
       this.currentOperand;
       this.previousOperand;
+      this.isEqualPressedAgain = false;
+      this.previousResult;
+      this.previousOperation;
       return true;
     }
   }, {
@@ -81,18 +84,28 @@ var calculator = /*#__PURE__*/function () {
         var keyOperation = key.dataset.operation;
         key.addEventListener('click', function () {
           if (keyFunction == _this.selectors.numberKey) {
+            _this.isEqualPressedAgain = false;
+
             _this.appendNumber(keyInnerText);
 
             _this.updateDisplay();
+
+            _this.previousOperandValue = _this.currentOperand;
           } else if (keyFunction == _this.selectors.operationKey) {
+            _this.isEqualPressedAgain = false;
+
             _this.selectOperation(keyOperation);
 
             _this.updateDisplay();
           } else if (keyFunction == _this.selectors.deleteKey) {
+            _this.isEqualPressedAgain = false;
+
             _this["delete"]();
 
             _this.updateDisplay();
           } else if (keyFunction == _this.selectors.resetKey) {
+            _this.isEqualPressedAgain = false;
+
             _this.reset();
 
             _this.updateDisplay();
@@ -100,6 +113,8 @@ var calculator = /*#__PURE__*/function () {
             _this.compute();
 
             _this.updateDisplay();
+
+            _this.isEqualPressedAgain = true;
           }
         });
       });
@@ -169,8 +184,15 @@ var calculator = /*#__PURE__*/function () {
         '*': prev * current,
         '/': prev / current
       };
+
+      if (this.isEqualPressedAgain) {
+        this.previousResult = this.currentOperand;
+        this.currentOperand = this.performSameCalculation();
+      }
+
       if (isNaN(prev) || isNaN(current)) return;
       this.currentOperand = this.checkForErrors(current, prev, operations);
+      this.previousOperation = this.operation;
       this.operation = undefined;
       this.previousOperand = '';
     }
@@ -250,6 +272,24 @@ var calculator = /*#__PURE__*/function () {
       }
 
       return result;
+    }
+    /** 
+    * Function that calculates value of previous result and incredient/factor.
+    * It is used when equal button is pressed again.  
+    * @return   {Number}      Returns result of calculation.
+    */
+
+  }, {
+    key: "performSameCalculation",
+    value: function performSameCalculation() {
+      var factor = parseFloat(this.previousOperandValue);
+      var operations = {
+        '+': this.previousResult + factor,
+        '-': this.previousResult - factor,
+        '*': this.previousResult * factor,
+        '/': this.previousResult / factor
+      };
+      return operations[this.previousOperation];
     }
   }]);
 
