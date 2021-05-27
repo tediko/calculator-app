@@ -39,7 +39,6 @@ export default class ThemeSwitch {
         })
     }
 
-    // 
     /**
     * Change body data-attribute to new theme from focused element.
     * @param    {element} input    Current focused element
@@ -55,13 +54,17 @@ export default class ThemeSwitch {
         }
     }
 
-    // Save chosen theme to local storage
+    /**
+    * Function to save chosen theme to local storage
+    */
     saveThemeToLocalStorage(theme) {
         localStorage.setItem('theme', JSON.stringify(`${theme || this.newTheme}`));
     }
 
-    // This function is used on init.
-    // Set active theme and add classList to enable transitions on page.
+    /**
+    * Function used on init to set active theme and 
+    * add classList to enable transitions on page.
+    */
     setBodyTheme() {
         this.body.dataset.theme = this.activeTheme;
         
@@ -86,7 +89,9 @@ export default class ThemeSwitch {
         })
     }
 
-    // Add custom theme variables to body.
+    /**
+    * Function to add custom theme variables to body.
+    */
     displayCustomTheme() {
         this.body.style.setProperty('--c-bg-main', this.getColors().main);
         this.body.style.setProperty('--c-bg-keypad', this.getColors().keypad);
@@ -105,7 +110,9 @@ export default class ThemeSwitch {
         this.body.style.setProperty('--c-text-display', this.getColors().display);
     }
 
-    // Remove custom theme variables from body.
+    /**
+    * Function to remove custom theme variables from body.
+    */
     removeCustomTheme() {
         this.body.style.removeProperty('--c-bg-main');
         this.body.style.removeProperty('--c-bg-keypad');

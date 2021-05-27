@@ -661,8 +661,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
           _this.saveThemeToLocalStorage();
         });
       });
-    } // 
-
+    }
     /**
     * Change body data-attribute to new theme from focused element.
     * @param    {element} input    Current focused element
@@ -679,14 +678,20 @@ var ThemeSwitch = /*#__PURE__*/function () {
       } else {
         this.removeCustomTheme();
       }
-    } // Save chosen theme to local storage
+    }
+    /**
+    * Function to save chosen theme to local storage
+    */
 
   }, {
     key: "saveThemeToLocalStorage",
     value: function saveThemeToLocalStorage(theme) {
       localStorage.setItem('theme', JSON.stringify("".concat(theme || this.newTheme)));
-    } // This function is used on init.
-    // Set active theme and add classList to enable transitions on page.
+    }
+    /**
+    * Function used on init to set active theme and 
+    * add classList to enable transitions on page.
+    */
 
   }, {
     key: "setBodyTheme",
@@ -714,7 +719,10 @@ var ThemeSwitch = /*#__PURE__*/function () {
           return false;
         }
       });
-    } // Add custom theme variables to body.
+    }
+    /**
+    * Function to add custom theme variables to body.
+    */
 
   }, {
     key: "displayCustomTheme",
@@ -734,7 +742,10 @@ var ThemeSwitch = /*#__PURE__*/function () {
       this.body.style.setProperty('--c-text-secondary', this.getColors().secondary);
       this.body.style.setProperty('--c-text-header', this.getColors().header);
       this.body.style.setProperty('--c-text-display', this.getColors().display);
-    } // Remove custom theme variables from body.
+    }
+    /**
+    * Function to remove custom theme variables from body.
+    */
 
   }, {
     key: "removeCustomTheme",
