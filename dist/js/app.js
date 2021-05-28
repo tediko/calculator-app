@@ -843,7 +843,7 @@ var ThemeSwitch = /*#__PURE__*/function () {
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.saveThemeToLocalStorage(this.selectors.darkTheme);
       } else {
-        this.saveThemeToLocalStorage(this.selectors.lightTheme);
+        this.saveThemeToLocalStorage(this.selectors.darkTheme);
       }
     }
   }]);
