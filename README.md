@@ -18,6 +18,8 @@
 ### Intro
 Hello! This is my solution to [Calculator app - Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). It is a simple calculator app with basic math functions and theme toggle with a customizable widget. You can use both the keyboard and the mouse to enter data into the calculator. Of the things that are invisible at first glance, the calculator returns a error message after the user divides by zero and also after you calculate one result you can click/input equal button again and it will perform same operation again. For example *2+2=4* and another click will be *6* since result our previous equation was *4* and our last input was *2* so *4+2=6*. It was one of the most enjoyable challenges I have done so far. When I saw that challenge requires a change theme I decided to add another functionality which is extra "*custom*" theme where the user can edit freely colors in theme modal. Many times, when I finished a certain function, I had an idea with another one, and I had a lot of fun doing it. Honestly, It took me more time to made this custom modal than the calculator itself - which itself was a good javascript challenge as well.
 
+⭐**Featured solution in [Vol. 55 of the Frontend Mentor Newsletter](https://mailchi.mp/11d7dcdfa8f5/frontend-mentor-newsletter-vol-55?e=[UNIQID]).**
+
 ### The challenge
 
 >Your challenge is to build out this calculator app and get it looking as close to the design as possible.
