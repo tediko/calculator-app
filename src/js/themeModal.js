@@ -116,12 +116,6 @@ export default class ThemeModal {
         this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
         this.modal.classList.remove(`${this.selectors.activeClass}`);
         this.resetCustomColors();
-        this.colorButtons.forEach(button => {
-            button.style.backgroundColor = ``;
-        })
-        this.assignColorsToButtonsDataAttribute();
-        this.removeFromLocalStorage();
-        this.colors = this.themeSwitch.getColors();
     }
 
     /**
@@ -248,7 +242,13 @@ export default class ThemeModal {
     * and reset custom theme colors to initial state.
     */
     resetCustomColors() {
-        this.removeFromLocalStorage();
         this.themeSwitch.removeCustomTheme();
+        this.removeFromLocalStorage();
+        this.colorButtons.forEach(button => {
+            button.style.backgroundColor = ``;
+        })
+        this.assignColorsToButtonsDataAttribute();
+        this.removeFromLocalStorage();
+        this.colors = this.themeSwitch.getColors();
     }
 }

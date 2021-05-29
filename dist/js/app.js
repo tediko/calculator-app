@@ -518,12 +518,6 @@ var ThemeModal = /*#__PURE__*/function () {
       this.overlayWrapper.classList.remove("".concat(this.selectors.activeClass));
       this.modal.classList.remove("".concat(this.selectors.activeClass));
       this.resetCustomColors();
-      this.colorButtons.forEach(function (button) {
-        button.style.backgroundColor = "";
-      });
-      this.assignColorsToButtonsDataAttribute();
-      this.removeFromLocalStorage();
-      this.colors = this.themeSwitch.getColors();
     }
     /**
     * Create new Picker class and display palette with colors.
@@ -675,8 +669,14 @@ var ThemeModal = /*#__PURE__*/function () {
   }, {
     key: "resetCustomColors",
     value: function resetCustomColors() {
-      this.removeFromLocalStorage();
       this.themeSwitch.removeCustomTheme();
+      this.removeFromLocalStorage();
+      this.colorButtons.forEach(function (button) {
+        button.style.backgroundColor = "";
+      });
+      this.assignColorsToButtonsDataAttribute();
+      this.removeFromLocalStorage();
+      this.colors = this.themeSwitch.getColors();
     }
   }]);
 
