@@ -7,6 +7,7 @@
     $c-blue-lighter: #d8e2dc;
     $c-black: #161a1d;
     $c-red: #e63946;
+    $c-green: #80b918ff;
 
     visibility: hidden;
     position: absolute;
@@ -57,6 +58,11 @@
 
     &__cta-wrapper {
         display: flex;
+        gap: 10px;
+
+        @include breakpoint('md') {
+            gap: 15px;
+        }
     }
 
     &__cta {
@@ -73,21 +79,58 @@
             outline-offset: 2px;
         }
 
-        &--save {
-            @extend #{$root}__cta;
-            padding: 5px 6px;
-            border-radius: 5px;
-            background: $c-blue-darker;
-            color: $c-white;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-right: 8px;
+        @include breakpoint('sm') {
+            #{$root}__reset-icon,
+            #{$root}__check-icon {
+                display: none;
+            }
+        }
+
+        span {
+            display: none;
+
+            @include breakpoint('sm') {
+                display: block;
+            }
+        }
+
+        &--func {
+            @include breakpoint('sm') {
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
 
             @include breakpoint('md') {
                 padding: 10px 15px;
-                margin-right: 20px;
+            }
+        }
+
+        &--reset {
+            @extend #{$root}__cta;
+            @extend #{$root}__cta--func;
+            font-size: 1.16rem;
+            color: $c-blue-darker;
+
+            @include breakpoint('sm') {
+                font-size: 0.9rem;
+                background: $c-blue-darker;
+                color: $c-white;
+            }
+        }
+
+        &--save {
+            @extend #{$root}__cta;
+            @extend #{$root}__cta--func;
+            font-size: 1.3rem;
+            color: $c-green;
+
+            @include breakpoint('sm') {
+                font-size: 0.9rem;
+                background: $c-green;
+                color: $c-white;
             }
         }
 

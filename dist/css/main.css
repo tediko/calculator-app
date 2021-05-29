@@ -392,34 +392,76 @@ i {
 }
 .theme-modal__cta-wrapper {
   display: flex;
+  gap: 10px;
 }
-.theme-modal__cta, .theme-modal__cta--close, .theme-modal__cta--save {
+@media (min-width: 768px) {
+  .theme-modal__cta-wrapper {
+    gap: 15px;
+  }
+}
+.theme-modal__cta, .theme-modal__cta--close, .theme-modal__cta--save, .theme-modal__cta--reset {
   border: none;
   cursor: pointer;
   background-color: transparent;
 }
-.theme-modal__cta:focus, .theme-modal__cta--close:focus, .theme-modal__cta--save:focus {
+.theme-modal__cta:focus, .theme-modal__cta--close:focus, .theme-modal__cta--save:focus, .theme-modal__cta--reset:focus {
   outline: none;
 }
-.theme-modal__cta:focus-visible, .theme-modal__cta--close:focus-visible, .theme-modal__cta--save:focus-visible {
+.theme-modal__cta:focus-visible, .theme-modal__cta--close:focus-visible, .theme-modal__cta--save:focus-visible, .theme-modal__cta--reset:focus-visible {
   outline: 2px solid #e63946;
   outline-offset: 2px;
 }
-.theme-modal__cta--save {
-  padding: 5px 6px;
-  border-radius: 5px;
-  background: #457b9d;
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-right: 8px;
+@media (min-width: 481px) {
+  .theme-modal__cta .theme-modal__reset-icon, .theme-modal__cta--close .theme-modal__reset-icon, .theme-modal__cta--save .theme-modal__reset-icon, .theme-modal__cta--reset .theme-modal__reset-icon,
+.theme-modal__cta .theme-modal__check-icon,
+.theme-modal__cta--close .theme-modal__check-icon,
+.theme-modal__cta--save .theme-modal__check-icon,
+.theme-modal__cta--reset .theme-modal__check-icon {
+    display: none;
+  }
+}
+.theme-modal__cta span, .theme-modal__cta--close span, .theme-modal__cta--save span, .theme-modal__cta--reset span {
+  display: none;
+}
+@media (min-width: 481px) {
+  .theme-modal__cta span, .theme-modal__cta--close span, .theme-modal__cta--save span, .theme-modal__cta--reset span {
+    display: block;
+  }
+}
+@media (min-width: 481px) {
+  .theme-modal__cta--func, .theme-modal__cta--save, .theme-modal__cta--reset {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
 }
 @media (min-width: 768px) {
-  .theme-modal__cta--save {
+  .theme-modal__cta--func, .theme-modal__cta--save, .theme-modal__cta--reset {
     padding: 10px 15px;
-    margin-right: 20px;
+  }
+}
+.theme-modal__cta--reset {
+  font-size: 1.16rem;
+  color: #457b9d;
+}
+@media (min-width: 481px) {
+  .theme-modal__cta--reset {
+    font-size: 0.9rem;
+    background: #457b9d;
+    color: #ffffff;
+  }
+}
+.theme-modal__cta--save {
+  font-size: 1.3rem;
+  color: #80b918ff;
+}
+@media (min-width: 481px) {
+  .theme-modal__cta--save {
+    font-size: 0.9rem;
+    background: #80b918ff;
+    color: #ffffff;
   }
 }
 .theme-modal__cta--close {
