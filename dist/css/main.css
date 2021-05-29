@@ -819,6 +819,7 @@ i {
 .calc__display-value--previous {
   font-size: clamp(1rem, 4vw, 1.3rem);
   opacity: 0.3;
+  height: 23px;
 }
 .calc__display-value--current {
   font-size: clamp(2rem, 7vw, 2.9375rem);
