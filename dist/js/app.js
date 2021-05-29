@@ -518,6 +518,12 @@ var ThemeModal = /*#__PURE__*/function () {
       this.overlayWrapper.classList.remove("".concat(this.selectors.activeClass));
       this.modal.classList.remove("".concat(this.selectors.activeClass));
       this.resetCustomColors();
+      this.colorButtons.forEach(function (button) {
+        button.style.backgroundColor = "";
+      });
+      this.assignColorsToButtonsDataAttribute();
+      this.removeFromLocalStorage();
+      this.colors = this.themeSwitch.getColors();
     }
     /**
     * Create new Picker class and display palette with colors.
@@ -576,6 +582,15 @@ var ThemeModal = /*#__PURE__*/function () {
     key: "saveToLocalStorage",
     value: function saveToLocalStorage() {
       localStorage.setItem('colors', JSON.stringify(this.colors));
+    }
+    /**
+    * Function that save colors from localStorage
+    */
+
+  }, {
+    key: "removeFromLocalStorage",
+    value: function removeFromLocalStorage() {
+      localStorage.removeItem('colors');
     }
     /**
     * Sets data-theme attribute for body element
@@ -660,7 +675,7 @@ var ThemeModal = /*#__PURE__*/function () {
   }, {
     key: "resetCustomColors",
     value: function resetCustomColors() {
-      localStorage.removeItem('colors');
+      this.removeFromLocalStorage();
       this.themeSwitch.removeCustomTheme();
     }
   }]);
