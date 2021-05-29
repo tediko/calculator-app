@@ -52,6 +52,7 @@ var calculator = /*#__PURE__*/function () {
         previousValueElement: 'data-previous-value',
         currentValueElement: 'data-current-value',
         keys: 'data-keys',
+        themeModal: 'data-modal',
         numberKey: 'num',
         operationKey: 'func',
         deleteKey: 'del',
@@ -63,6 +64,7 @@ var calculator = /*#__PURE__*/function () {
       this.previousValueElement = document.querySelector("[".concat(this.selectors.previousValueElement, "]"));
       this.currentValueElement = document.querySelector("[".concat(this.selectors.currentValueElement, "]"));
       this.keys = document.querySelectorAll("[".concat(this.selectors.keys, "]"));
+      this.themeModal = document.querySelector("[".concat(this.selectors.themeModal, "]"));
       if (!this.previousValueElement || !this.currentValueElement || !this.keys) return false;
       this.isDivisionByZero = false;
       this.currentOperand;
@@ -80,6 +82,7 @@ var calculator = /*#__PURE__*/function () {
       this.reset(); // Add event listener to keys.
 
       this.keys.forEach(function (key) {
+        if (_this.checkIfThemeModalIsActive()) return;
         var keyFunction = key.dataset.keys;
         var keyInnerText = key.innerHTML;
         var keyOperation = key.dataset.operation;
@@ -89,6 +92,7 @@ var calculator = /*#__PURE__*/function () {
       }); // Add listener to document for keyboard input
 
       document.addEventListener('keydown', function (event) {
+        if (_this.checkIfThemeModalIsActive()) return;
         var keys = {
           '0': 'num',
           '1': 'num',
@@ -326,6 +330,20 @@ var calculator = /*#__PURE__*/function () {
         this.compute();
         this.updateDisplay();
         this.isEqualPressedAgain = true;
+      }
+    }
+    /** 
+    * Function that check if themeModal is active. 
+    * @return   {Boolean}      Returns boolean value
+    */
+
+  }, {
+    key: "checkIfThemeModalIsActive",
+    value: function checkIfThemeModalIsActive() {
+      if (this.themeModal.classList.contains('active')) {
+        return true;
+      } else {
+        return false;
       }
     }
   }]);

@@ -9,6 +9,7 @@ export default class calculator {
             previousValueElement: 'data-previous-value',
             currentValueElement: 'data-current-value',
             keys: 'data-keys',
+            themeModal: 'data-modal',
             numberKey: 'num',
             operationKey: 'func',
             deleteKey: 'del',
@@ -21,6 +22,7 @@ export default class calculator {
         this.previousValueElement = document.querySelector(`[${this.selectors.previousValueElement}]`);
         this.currentValueElement = document.querySelector(`[${this.selectors.currentValueElement}]`);
         this.keys = document.querySelectorAll(`[${this.selectors.keys}]`);
+        this.themeModal = document.querySelector(`[${this.selectors.themeModal}]`);
 
         if (!this.previousValueElement || !this.currentValueElement || !this.keys) return false;
 
@@ -36,9 +38,10 @@ export default class calculator {
 
     setupEvents() {
         this.reset();
-
+        
         // Add event listener to keys.
         this.keys.forEach(key => {
+            if (this.checkIfThemeModalIsActive()) return;
             let keyFunction = key.dataset.keys;
             let keyInnerText = key.innerHTML;
             let keyOperation = key.dataset.operation;
@@ -49,6 +52,7 @@ export default class calculator {
         })
         // Add listener to document for keyboard input
         document.addEventListener('keydown', (event) => {
+            if (this.checkIfThemeModalIsActive()) return;
             const keys = {
                 '0': 'num',
                 '1': 'num',
@@ -269,6 +273,18 @@ export default class calculator {
             this.compute();
             this.updateDisplay();
             this.isEqualPressedAgain = true;
+        }
+    }
+
+    /** 
+    * Function that check if themeModal is active. 
+    * @return   {Boolean}      Returns boolean value
+    */
+    checkIfThemeModalIsActive() {
+        if (this.themeModal.classList.contains('active')) {
+            return true;
+        } else {
+            return false;
         }
     }
  }
