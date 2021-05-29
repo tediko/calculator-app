@@ -373,6 +373,7 @@ var ThemeModal = /*#__PURE__*/function () {
         body: 'data-theme',
         modal: 'data-modal',
         toggleButton: 'data-settings',
+        resetButton: 'data-modal-reset',
         saveButton: 'data-modal-save',
         closeButton: 'data-modal-close',
         colorButtons: 'data-theme-picker',
@@ -384,13 +385,14 @@ var ThemeModal = /*#__PURE__*/function () {
       };
       this.body = document.querySelector("[".concat(this.selectors.body, "]"));
       this.modal = document.querySelector("[".concat(this.selectors.modal, "]"));
-      this.saveButton = document.querySelector("[".concat(this.selectors.saveButton, "]"));
       this.toggleButton = document.querySelector("[".concat(this.selectors.toggleButton, "]"));
+      this.resetButton = document.querySelector("[".concat(this.selectors.resetButton, "]"));
+      this.saveButton = document.querySelector("[".concat(this.selectors.saveButton, "]"));
       this.closeButton = document.querySelector("[".concat(this.selectors.closeButton, "]"));
       this.colorButtons = document.querySelectorAll("[".concat(this.selectors.colorButtons, "]"));
       this.colorGeneratorWrapper = document.querySelector("[".concat(this.selectors.colorGeneratorWrapper, "]"));
       this.overlayWrapper = document.querySelector("[".concat(this.selectors.overlayWrapper, "]"));
-      if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
+      if (!this.body || !this.modal || !this.toggleButton || !this.saveButton || !this.resetButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
       this.themeSwitch = new _themeSwitch__WEBPACK_IMPORTED_MODULE_1__.default();
       this.colors = this.themeSwitch.getColors(); // Get colors from local storage or use empty object with default colors
 
@@ -415,6 +417,9 @@ var ThemeModal = /*#__PURE__*/function () {
       });
       this.saveButton.addEventListener('click', function () {
         return _this.save();
+      });
+      this.resetButton.addEventListener('click', function () {
+        return _this.reset();
       });
       this.colorButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -484,6 +489,17 @@ var ThemeModal = /*#__PURE__*/function () {
       this.themeSwitch.displayCustomTheme();
       this.themeSwitch.saveThemeToLocalStorage("".concat(this.selectors.customTheme));
       this.modal.classList.remove("".concat(this.selectors.activeClass));
+    }
+    /**
+    * Function that reset all colors in custom theme
+    */
+
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.overlayWrapper.classList.remove("".concat(this.selectors.activeClass));
+      this.modal.classList.remove("".concat(this.selectors.activeClass));
+      this.resetCustomColors();
     }
     /**
     * Create new Picker class and display palette with colors.
@@ -617,6 +633,17 @@ var ThemeModal = /*#__PURE__*/function () {
       this.colorButtons.forEach(function (button) {
         button.style.backgroundColor = "".concat(button.dataset.color);
       });
+    }
+    /**
+    * Function that remove saved in LocalStorage colors
+    * and reset custom theme colors to initial state.
+    */
+
+  }, {
+    key: "resetCustomColors",
+    value: function resetCustomColors() {
+      localStorage.removeItem('colors');
+      this.themeSwitch.removeCustomTheme();
     }
   }]);
 

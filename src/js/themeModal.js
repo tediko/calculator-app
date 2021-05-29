@@ -12,6 +12,7 @@ export default class ThemeModal {
             body: 'data-theme',
             modal: 'data-modal',
             toggleButton: 'data-settings',
+            resetButton: 'data-modal-reset',
             saveButton: 'data-modal-save',
             closeButton: 'data-modal-close',
             colorButtons: 'data-theme-picker',
@@ -24,13 +25,14 @@ export default class ThemeModal {
 
         this.body = document.querySelector(`[${this.selectors.body}]`);
         this.modal = document.querySelector(`[${this.selectors.modal}]`);
-        this.saveButton = document.querySelector(`[${this.selectors.saveButton}]`);
         this.toggleButton = document.querySelector(`[${this.selectors.toggleButton}]`);
+        this.resetButton = document.querySelector(`[${this.selectors.resetButton}]`);
+        this.saveButton = document.querySelector(`[${this.selectors.saveButton}]`);
         this.closeButton = document.querySelector(`[${this.selectors.closeButton}]`);
         this.colorButtons = document.querySelectorAll(`[${this.selectors.colorButtons}]`);
         this.colorGeneratorWrapper = document.querySelector(`[${this.selectors.colorGeneratorWrapper}]`);
         this.overlayWrapper = document.querySelector(`[${this.selectors.overlayWrapper}]`);
-        if (!this.body || !this.modal || !this.saveButton || !this.toggleButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
+        if (!this.body || !this.modal || !this.toggleButton || !this.saveButton || !this.resetButton || !this.closeButton || !this.colorButtons || !this.colorGeneratorWrapper || !this.overlayWrapper) return false;
         
         this.themeSwitch = new ThemeSwitch();
         this.colors = this.themeSwitch.getColors(); // Get colors from local storage or use empty object with default colors
@@ -49,6 +51,7 @@ export default class ThemeModal {
         });
         this.closeButton.addEventListener('click', () => this.close());
         this.saveButton.addEventListener('click', () => this.save());
+        this.resetButton.addEventListener('click', () => this.reset());
         this.colorButtons.forEach(button => {
             button.addEventListener('click', () => this.selectColor(button));
         });
@@ -104,6 +107,15 @@ export default class ThemeModal {
         this.themeSwitch.displayCustomTheme();
         this.themeSwitch.saveThemeToLocalStorage(`${this.selectors.customTheme}`);
         this.modal.classList.remove(`${this.selectors.activeClass}`);
+    }
+
+    /**
+    * Function that reset all colors in custom theme
+    */
+    reset() {
+        this.overlayWrapper.classList.remove(`${this.selectors.activeClass}`);
+        this.modal.classList.remove(`${this.selectors.activeClass}`);
+        this.resetCustomColors();
     }
 
     /**
@@ -216,5 +228,14 @@ export default class ThemeModal {
         this.colorButtons.forEach(button => {
             button.style.backgroundColor = `${button.dataset.color}`;
         })
+    }
+    
+    /**
+    * Function that remove saved in LocalStorage colors
+    * and reset custom theme colors to initial state.
+    */
+    resetCustomColors() {
+        localStorage.removeItem('colors');
+        this.themeSwitch.removeCustomTheme();
     }
 }
