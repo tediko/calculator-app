@@ -298,8 +298,8 @@ body[data-theme=custom] {
 
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?1jqhz1");
-  src: url("../fonts/icomoon.eot?1jqhz1#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?1jqhz1") format("truetype"), url("../fonts/icomoon.woff?1jqhz1") format("woff"), url("../fonts/icomoon.svg?1jqhz1#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?k67tsx");
+  src: url("../fonts/icomoon.eot?k67tsx#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?k67tsx") format("truetype"), url("../fonts/icomoon.woff?k67tsx") format("woff"), url("../fonts/icomoon.svg?k67tsx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -317,6 +317,14 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.i-save-disk:before {
+  content: "";
+}
+
+.i-check:before {
+  content: "";
+}
+
 .i-close:before {
   content: "";
 }
@@ -327,6 +335,10 @@ i {
 
 .i-save:before {
   content: "";
+}
+
+.i-undo:before {
+  content: "";
 }
 
 .theme-modal {
